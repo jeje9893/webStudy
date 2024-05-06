@@ -156,18 +156,29 @@
             display: table-cell;
         }
 
-        button {}
+        button {
+            transition-duration: 0.4s;
+        }
 
 
         button.topbutton {
             background-color: #DDDDDD;
             color: #333333;
         }
+        .topbutton:hover{
+            background-color: #444444;
+            color: #DDDDDD;
+        }
 
-        button.button.numbutton {
+        button.numbutton {
             background-color: #FAFAFA;
             color: #333333;
             font-weight: bold;
+        }
+        .button.numbutton:hover{
+            background-color: #444444;
+            color: #DDDDDD;
+
         }
 
         button.yellowbutton {
@@ -175,16 +186,27 @@
             color: #333333;
             font-weight: bold;
         }
+        .yellowbutton:hover{
+            background-color: #fa7901;
+            color: #DDDDDD;
+        }
 
         button.greybutton {
             background-color: #DDDDDD;
             color: #333333;
         }
+        .greybutton:hover{
+            background-color: #444444;
+            color: #DDDDDD;
+        }
 
-        button:hover {}
+        button:hover {
+
+        }
     </style>
     <script>
         function numberButton(num) {
+            document.getElementById('AC').innerHTML = 'CE';
             if (document.getElementById('display2').innerHTML == '0') {
                 document.getElementById('display2').innerHTML = num;
             } else {
@@ -198,7 +220,59 @@
             curValue = parseFloat(document.getElementById('display2').innerHTML);
             document.getElementById('display2').innerHTML = 0;
             operator = '+';
+            if (operator == '+') {
+                curValue += parseFloat(document.getElementById('display2').innerHTML);
+                document.getElementById('display2').innerHTML = curValue;
+            }
 
+        }
+        function minusButton() {
+            curValue = parseFloat(document.getElementById('display2').innerHTML);
+            document.getElementById('display2').innerHTML = 0;
+            operator = '-';
+
+        }
+        function productButton() {
+            curValue = parseFloat(document.getElementById('display2').innerHTML);
+            document.getElementById('display2').innerHTML = 0;
+            operator = '*';
+
+        }
+        function divideButton() {
+            curValue = parseFloat(document.getElementById('display2').innerHTML);
+            document.getElementById('display2').innerHTML = 0;
+            operator = '/';
+
+        }
+
+        function equalButton() {
+            document.getElementById('AC').innerHTML = 'AC';
+            if (operator == '+') {
+                curValue += parseFloat(document.getElementById('display2').innerHTML);
+                document.getElementById('display2').innerHTML = curValue;
+                operator = '';
+            }
+            else if (operator == '-') {
+                curValue -= parseFloat(document.getElementById('display2').innerHTML);
+                document.getElementById('display2').innerHTML = curValue;
+                operator = '';
+            }
+            else if (operator == '*') {
+                curValue *= parseFloat(document.getElementById('display2').innerHTML);
+                document.getElementById('display2').innerHTML = curValue;
+                operator = '';
+            }
+            else if (operator == '/') {
+                curValue /= parseFloat(document.getElementById('display2').innerHTML);
+                document.getElementById('display2').innerHTML = curValue;
+                operator = '';
+            }
+            else { }
+        }
+
+        function ACButton() {
+            document.getElementById('display2').innerHTML = '0';
+            document.getElementById('AC').innerHTML = 'AC';
         }
     </script>
 </head>
@@ -270,7 +344,7 @@
                 <td><button class="button numbutton" onclick="numberButton(7);">7</button></td>
                 <td><button class="button numbutton" onclick="numberButton(8);">8</button></td>
                 <td><button class="button numbutton" onclick="numberButton(9);">9</button></td>
-                <td><button class="button yellowbutton">÷</button></td>
+                <td><button class="button yellowbutton" onclick="divideButton();">÷</button></td>
                 <td><button class="button greybutton">R2</button></td>
             </tr>
             <tr>
@@ -279,7 +353,7 @@
                 <td><button class="button numbutton" onclick="numberButton(4);">4</button></td>
                 <td><button class="button numbutton" onclick="numberButton(5);">5</button></td>
                 <td><button class="button numbutton" onclick="numberButton(6);">6</button></td>
-                <td><button class="button yellowbutton">x</button></td>
+                <td><button class="button yellowbutton" onclick="productButton();">x</button></td>
                 <td><button class="button greybutton">R0</button></td>
             </tr>
             <tr>
@@ -288,27 +362,18 @@
                 <td><button class="button numbutton" onclick="numberButton(1);">1</button></td>
                 <td><button class="button numbutton" onclick="numberButton(2);">2</button></td>
                 <td><button class="button numbutton" onclick="numberButton(3);">3</button></td>
-                <td><button class="button yellowbutton">-</button></td>
-                <td><button class="button greybutton">AC</button></td>
+                <td><button class="button yellowbutton" onclick="minusButton();">-</button></td>
+                <td><button class="button greybutton" id="AC" onclick="ACButton();">AC</button></td>
             </tr>
             <tr>
                 <td><button class="button greybutton">√x</button></td>
                 <td><button class="button greybutton">%</button></td>
-                <td><button class="button numbutton">0</button></td>
+                <td><button class="button numbutton" onclick="numberButton(0);">0</button></td>
                 <td><button class="button numbutton">.</button></td>
                 <td><button class="button numbutton">+/-</button></td>
                 <td><button class="button yellowbutton" onclick="plusButton();">+</button></td>
-                <td><button class="button yellowbutton">=</button></td>
+                <td><button class="button yellowbutton" onclick="equalButton();">=</button></td>
             </tr>
-            <tr>
-            </tr>
-            <tr>
-            </tr>
-            <tr>
-
-            </tr>
-
-
         </table>
 
     </div>
