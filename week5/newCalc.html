@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initail-scale=1.0">
+    <title>JS Bin</title>
+    <style>
+        @media (max-width:540px) {
+            div.empty {
+                display: none;
+            }
+
+            div.vertical {
+                display: block;
+            }
+
+            div.horizontal {
+                display: none;
+            }
+
+            td {
+                width: 25%;
+                padding: 1px;
+                border-style: none;
+                display: table-cell;
+                vertical-align: middle;
+            }
+
+            .cs_window {
+                width: 290px;
+                height: 40px;
+                border: 1px solid #999999;
+                font-size: 1.5em;
+                margin: 10px 0 10px 0;
+                color: #000000;
+                background-color: #ffffff;
+                text-align: right;
+                vertical-align: middle;
+            }
+
+            button.button {
+                box-sizing: border-box;
+                width: 100%;
+                height: 55px;
+                text-align: center;
+                color: #444444;
+                background-color: #DDDDDD;
+                border: 1px solid #CCCCCC;
+                border-radius: 10px;
+                font-size: 1.75em;
+                margin-top: 0px;
+                padding: 0px;
+                vertical-align: middle;
+                margin: 0;
+            }
+
+            button.topbutton {
+                height: 40px;
+                background-color: #DDDDDD;
+                color: #333333;
+            }
+        }
+
+        @media (max-width:360px) {
+            div.empty {
+                display: block;
+            }
+
+            div.vertical {
+                display: none;
+            }
+
+            div.horizontal {
+                display: none;
+            }
+        }
+
+        @media (min-width:541px) {
+            div.empty {
+                display: none;
+            }
+
+            div.vertical {
+                display: none;
+            }
+
+            div.horizontal {
+                display: block;
+            }
+
+            .cs_window {
+                width: 380px;
+                height: 40px;
+                border: 1px solid #999999;
+                font-size: 1.5em;
+                margin: 10px 0 10px 0;
+                color: #000000;
+                background-color: #ffffff;
+                text-align: right;
+                vertical-align: middle;
+            }
+
+            td {
+                width: 14%;
+                padding: 1px;
+                border-style: none;
+                display: table-cell;
+                vertical-align: middle;
+            }
+
+            button.button {
+                box-sizing: border-box;
+                width: 100%;
+                height: 55px;
+                text-align: center;
+                color: #444444;
+                background-color: #DDDDDD;
+                border: 1px solid #CCCCCC;
+                border-radius: 10px;
+                font-size: 1.75em;
+                margin-top: 0px;
+                padding: 0px;
+                vertical-align: middle;
+                margin: 0;
+            }
+        }
+
+        #display {
+            width: 295px;
+            height: 52px;
+            font-size: 2em;
+            text-align: right;
+            margin-left: 1px;
+            margin-right: 1pxs;
+            background-color: white;
+        }
+
+
+        tbody {}
+
+        table {
+            border-style: none;
+            background-color: #f0f0f0;
+            border-radius: 15px;
+            padding: 5px;
+        }
+
+        tr {
+            display: table-row;
+            vertical-align: inherit;
+        }
+
+
+        span {
+            display: table-cell;
+        }
+
+        button {}
+
+
+        button.topbutton {
+            background-color: #DDDDDD;
+            color: #333333;
+        }
+
+        button.button.numbutton {
+            background-color: #FAFAFA;
+            color: #333333;
+            font-weight: bold;
+        }
+
+        button.yellowbutton {
+            background-color: #FFCC00;
+            color: #333333;
+            font-weight: bold;
+        }
+
+        button.greybutton {
+            background-color: #DDDDDD;
+            color: #333333;
+        }
+
+        button:hover {}
+    </style>
+    <script>
+        function numberButton(num) {
+            if (document.getElementById('display2').innerHTML == '0') {
+                document.getElementById('display2').innerHTML = num;
+            } else {
+                document.getElementById('display2').innerHTML += num;
+            }
+        }
+        let curValue = 0;
+        let operator = '';
+
+        function plusButton() {
+            curValue = parseFloat(document.getElementById('display2').innerHTML);
+            document.getElementById('display2').innerHTML = 0;
+            operator = '+';
+
+        }
+    </script>
+</head>
+
+<body>
+    <div class="empty">
+        <p>표시할 수 없음.</p>
+    </div>
+    <div class="vertical">
+        <table width=306 height=480 border=1>
+            <tr>
+                <td colspan="4"><span class="cs_window" name="cs_display" id="display1">2829</span></td>
+            </tr>
+            <tr>
+                <td><button class="button topbutton">mc</button></td>
+                <td><button class="button topbutton">mr</button></td>
+                <td><button class="button topbutton">m-</button></td>
+                <td><button class="button topbutton">m+</button></td>
+            </tr>
+            <tr>
+                <td><button class="button greybutton">AC</button></td>
+                <td><button class="button greybutton">√x</button></td>
+                <td><button class="button greybutton">%</button></td>
+                <td><button class="button yellowbutton">÷</button></td>
+            </tr>
+            <tr>
+                <td><button class="button numbutton">7</button></td>
+                <td><button class="button numbutton">8</button></td>
+                <td><button class="button numbutton">9</button></td>
+                <td><button class="button yellowbutton">x</button></td>
+            </tr>
+            <tr>
+                <td><button class="button numbutton">4</button></td>
+                <td><button class="button numbutton">5</button></td>
+                <td><button class="button numbutton">6</button></td>
+                <td><button class="button yellowbutton">-</button></td>
+            </tr>
+            <tr>
+                <td><button class="button numbutton">1</button></td>
+                <td><button class="button numbutton">2</button></td>
+                <td><button class="button numbutton">3</button></td>
+                <td><button class="button yellowbutton">+</button></td>
+            </tr>
+            <tr>
+                <td><button class="button numbutton">0</button></td>
+                <td><button class="button numbutton">.</button></td>
+                <td><button class="button numbutton">+/-</button></td>
+                <td><button class="button yellowbutton">=</button></td>
+            </tr>
+            <tr>
+                <td><button class="button greybutton">π</button></td>
+                <td><button class="button greybutton">x<sup>y</sup></button></td>
+                <td><button class="button greybutton">R2</button></td>
+                <td><button class="button greybutton">R0</button></td>
+
+            </tr>
+
+
+        </table>
+    </div>
+    <div class="horizontal">
+        <table width=400 height=300 border=1>
+            <tr>
+                <td colspan="7"><span class="cs_window" id="display2">0</span></td>
+            </tr>
+            <tr>
+                <td><button class="button topbutton">mc</button></td>
+                <td><button class="button topbutton">mr</button></td>
+                <td><button class="button numbutton" onclick="numberButton(7);">7</button></td>
+                <td><button class="button numbutton" onclick="numberButton(8);">8</button></td>
+                <td><button class="button numbutton" onclick="numberButton(9);">9</button></td>
+                <td><button class="button yellowbutton">÷</button></td>
+                <td><button class="button greybutton">R2</button></td>
+            </tr>
+            <tr>
+                <td><button class="button topbutton">m-</button></td>
+                <td><button class="button topbutton">m+</button></td>
+                <td><button class="button numbutton" onclick="numberButton(4);">4</button></td>
+                <td><button class="button numbutton" onclick="numberButton(5);">5</button></td>
+                <td><button class="button numbutton" onclick="numberButton(6);">6</button></td>
+                <td><button class="button yellowbutton">x</button></td>
+                <td><button class="button greybutton">R0</button></td>
+            </tr>
+            <tr>
+                <td><button class="button greybutton">π</button></td>
+                <td><button class="button greybutton">x<sup>y</sup></button></td>
+                <td><button class="button numbutton" onclick="numberButton(1);">1</button></td>
+                <td><button class="button numbutton" onclick="numberButton(2);">2</button></td>
+                <td><button class="button numbutton" onclick="numberButton(3);">3</button></td>
+                <td><button class="button yellowbutton">-</button></td>
+                <td><button class="button greybutton">AC</button></td>
+            </tr>
+            <tr>
+                <td><button class="button greybutton">√x</button></td>
+                <td><button class="button greybutton">%</button></td>
+                <td><button class="button numbutton">0</button></td>
+                <td><button class="button numbutton">.</button></td>
+                <td><button class="button numbutton">+/-</button></td>
+                <td><button class="button yellowbutton" onclick="plusButton();">+</button></td>
+                <td><button class="button yellowbutton">=</button></td>
+            </tr>
+            <tr>
+            </tr>
+            <tr>
+            </tr>
+            <tr>
+
+            </tr>
+
+
+        </table>
+
+    </div>
+</body>
+</head>
+
+</html>
