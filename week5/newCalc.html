@@ -228,10 +228,10 @@
         }
         function minusButton() {
             curValue = parseFloat(document.getElementById('display1').innerHTML);
-            if(result == 0){
+            if (result == 0) {
                 result += curValue;
             }
-            else{
+            else {
                 preCalc();
             }
             document.getElementById('display1').innerHTML = 0;
@@ -239,31 +239,36 @@
 
         }
         function productButton() {
-            curValue = parseFloat(document.getElementById('display1').innerHTML);
-            if(result == 0){
-                result += curValue;
+            if (result == 0) {
+                result += parseFloat(document.getElementById('display1').innerHTML);
+                curValue = parseFloat(document.getElementById('display1').innerHTML);
+                document.getElementById('display1').innerHTML = 0;
+                operator = '*';
             }
-            else{
+            else {
+                curValue = parseFloat(document.getElementById('display1').innerHTML);
                 preCalc();
+                document.getElementById('display1').innerHTML = 0;
+                operator = '*';
             }
-            document.getElementById('display1').innerHTML = 0;
-            operator = '*';
 
         }
         function divideButton() {
-            curValue = parseFloat(document.getElementById('display1').innerHTML);
-            if(result == 0){
-                result += curValue;
+            if (result == 0) {
+                result += parseFloat(document.getElementById('display1').innerHTML);
+                curValue = parseFloat(document.getElementById('display1').innerHTML);
+                document.getElementById('display1').innerHTML = 0;
+                operator = '/';
             }
-            else{
+            else {
+                curValue = parseFloat(document.getElementById('display1').innerHTML);
                 preCalc();
+                document.getElementById('display1').innerHTML = 0;
+                operator = '/';
             }
-            document.getElementById('display1').innerHTML = 0;
-            operator = '/';
 
         }
         function preCalc() {
-            document.getElementById('AC').innerHTML = 'AC';
             if (operator == '+') {
                 result += parseFloat(document.getElementById('display1').innerHTML);
             }
@@ -271,14 +276,13 @@
                 result -= parseFloat(document.getElementById('display1').innerHTML);
             }
             else if (operator == '*') {
-                result *= parseFloat(document.getElementById('display1').innerHTML);
+                result *= curValue;
             }
             else if (operator == '/') {
-                result /= parseFloat(document.getElementById('display1').innerHTML);
+                result /= curValue;
             }
             else { }
             curValue = 0;
-            result = 0;
         }
 
         function equalButton() {
