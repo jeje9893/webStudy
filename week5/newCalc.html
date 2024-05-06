@@ -211,8 +211,10 @@
             document.getElementById('AC').innerHTML = 'CE';
             if (document.getElementById('display1').innerHTML == '0') {
                 document.getElementById('display1').innerHTML = num;
+                document.getElementById('display2').innerHTML = num;
             } else {
                 document.getElementById('display1').innerHTML += num;
+                document.getElementById('display2').innerHTML += num;
             }
         }
         let curValue = 0;
@@ -223,6 +225,7 @@
             curValue = parseFloat(document.getElementById('display1').innerHTML);
             result += curValue;
             document.getElementById('display1').innerHTML = 0;
+            document.getElementById('display2').innerHTML = 0;
             operator = '+';
 
         }
@@ -235,6 +238,7 @@
                 preCalc();
             }
             document.getElementById('display1').innerHTML = 0;
+            document.getElementById('display2').innerHTML = 0;
             operator = '-';
 
         }
@@ -243,12 +247,14 @@
                 result += parseFloat(document.getElementById('display1').innerHTML);
                 curValue = parseFloat(document.getElementById('display1').innerHTML);
                 document.getElementById('display1').innerHTML = 0;
+                document.getElementById('display2').innerHTML = 0;
                 operator = '*';
             }
             else {
                 curValue = parseFloat(document.getElementById('display1').innerHTML);
                 preCalc();
                 document.getElementById('display1').innerHTML = 0;
+                document.getElementById('display2').innerHTML = 0;
                 operator = '*';
             }
 
@@ -258,12 +264,14 @@
                 result += parseFloat(document.getElementById('display1').innerHTML);
                 curValue = parseFloat(document.getElementById('display1').innerHTML);
                 document.getElementById('display1').innerHTML = 0;
+                document.getElementById('display2').innerHTML = 0;
                 operator = '/';
             }
             else {
                 curValue = parseFloat(document.getElementById('display1').innerHTML);
                 preCalc();
                 document.getElementById('display1').innerHTML = 0;
+                document.getElementById('display2').innerHTML = 0;
                 operator = '/';
             }
 
@@ -290,21 +298,25 @@
             if (operator == '+') {
                 result += parseFloat(document.getElementById('display1').innerHTML);
                 document.getElementById('display1').innerHTML = result;
+                document.getElementById('display2').innerHTML = result;
                 operator = '';
             }
             else if (operator == '-') {
                 result -= parseFloat(document.getElementById('display1').innerHTML);
                 document.getElementById('display1').innerHTML = result;
+                document.getElementById('display2').innerHTML = result;
                 operator = '';
             }
             else if (operator == '*') {
                 result *= parseFloat(document.getElementById('display1').innerHTML);
                 document.getElementById('display1').innerHTML = result;
+                document.getElementById('display2').innerHTML = result;
                 operator = '';
             }
             else if (operator == '/') {
                 result /= parseFloat(document.getElementById('display1').innerHTML);
                 document.getElementById('display1').innerHTML = result;
+                document.getElementById('display2').innerHTML = result;
                 operator = '';
             }
             else { }
@@ -314,6 +326,7 @@
 
         function ACButton() {
             document.getElementById('display1').innerHTML = '0';
+            document.getElementById('display2').innerHTML = '0';
             document.getElementById('AC').innerHTML = 'AC';
             curValue = 0;
             result = 0;
@@ -323,10 +336,12 @@
         function pmButton() {
             curPm = document.getElementById('display1').innerHTML;
             document.getElementById('display1').innerHTML = -curPm;
+            document.getElementById('display2').innerHTML = -curPm;
         }
 
         function dotButton() {
             document.getElementById('display1').innerHTML += '.';
+            document.getElementById('display2').innerHTML += '.';
 
         }
     </script>
