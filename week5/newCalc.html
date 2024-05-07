@@ -60,6 +60,11 @@
                 background-color: #DDDDDD;
                 color: #333333;
             }
+
+            .topbutton:active {
+                height: 35px;
+                width: 45px;
+            }
         }
 
         @media (max-width:360px) {
@@ -151,13 +156,23 @@
             vertical-align: inherit;
         }
 
+        td {
+            text-align: center;
+        }
+
 
         span {
             display: table-cell;
         }
 
         button {
-            transition-duration: 0.4s;
+            transition-duration: 0.3s;
+            cursor: pointer;
+        }
+
+        button:active {
+            height: 45px;
+            width: 45px;
         }
 
 
@@ -369,6 +384,7 @@
             curPm = document.getElementById('display1').innerHTML;
             document.getElementById('display1').innerHTML = -curPm;
             document.getElementById('display2').innerHTML = -curPm;
+            result = -curPm;
         }
 
         function dotButton() {
@@ -387,25 +403,25 @@
             document.getElementById('AC').innerHTML = 'AC';
             curValue = parseFloat(document.getElementById('display1').innerHTML);
             if (operator == '+') {
-                result = result + (result * curValue/100);
+                result = result + (result * curValue / 100);
                 document.getElementById('display1').innerHTML = result;
                 document.getElementById('display2').innerHTML = result;
                 operator = '';
             }
             else if (operator == '-') {
-                result = result - (result * curValue/100);
+                result = result - (result * curValue / 100);
                 document.getElementById('display1').innerHTML = result;
                 document.getElementById('display2').innerHTML = result;
                 operator = '';
             }
             else if (operator == '*') {
-                result = result * curValue/100;
+                result = result * curValue / 100;
                 document.getElementById('display1').innerHTML = result;
                 document.getElementById('display2').innerHTML = result;
                 operator = '';
             }
             else if (operator == '/') {
-                result = result /curValue *100;
+                result = result / curValue * 100;
                 document.getElementById('display1').innerHTML = result;
                 document.getElementById('display2').innerHTML = result;
                 operator = '';
