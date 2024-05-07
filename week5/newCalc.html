@@ -1,3 +1,5 @@
+<!-- mc,mr,m-,m+,R2,R0 버튼은 미구현입니다. 그 외 다른 버튼은 모두 동작하며 
+    실제 계산기와 비교하며 최대한 똑같은 값이 나오도록 만들었습니다 -->
 <!DOCTYPE html>
 <html>
 
@@ -224,6 +226,7 @@
     <script>
         function numberButton(num) {
             document.getElementById('AC').innerHTML = 'CE';
+            document.getElementById('AC1').innerHTML = 'CE';
             if (document.getElementById('display1').innerHTML == '0') {
                 document.getElementById('display1').innerHTML = num;
                 document.getElementById('display2').innerHTML = num;
@@ -335,6 +338,7 @@
         }
         function equalButton() {
             document.getElementById('AC').innerHTML = 'AC';
+            document.getElementById('AC1').innerHTML = 'AC';
             curValue = parseFloat(document.getElementById('display1').innerHTML);
             if (operator == '+') {
                 result += curValue;
@@ -375,6 +379,7 @@
             document.getElementById('display1').innerHTML = '0';
             document.getElementById('display2').innerHTML = '0';
             document.getElementById('AC').innerHTML = 'AC';
+            document.getElementById('AC1').innerHTML = 'AC';
             curValue = 0;
             result = 0;
         }
@@ -394,6 +399,8 @@
         }
 
         function rooButton() {
+            document.getElementById('AC').innerHTML = 'AC';
+            document.getElementById('AC1').innerHTML = 'AC';
             curValue = parseFloat(document.getElementById('display1').innerHTML);
             document.getElementById('display1').innerHTML = Math.sqrt(curValue);
             document.getElementById('display2').innerHTML = Math.sqrt(curValue);
@@ -401,6 +408,7 @@
 
         function percentButton() {
             document.getElementById('AC').innerHTML = 'AC';
+            document.getElementById('AC1').innerHTML = 'AC';
             curValue = parseFloat(document.getElementById('display1').innerHTML);
             if (operator == '+') {
                 result = result + (result * curValue / 100);
@@ -519,7 +527,7 @@
                 <td><button class="button numbutton" onclick="numberButton(2);">2</button></td>
                 <td><button class="button numbutton" onclick="numberButton(3);">3</button></td>
                 <td><button class="button yellowbutton" onclick="minusButton();">-</button></td>
-                <td><button class="button greybutton" id="AC" onclick="ACButton();">AC</button></td>
+                <td><button class="button greybutton" id="AC1" onclick="ACButton();">AC</button></td>
             </tr>
             <tr>
                 <td><button class="button greybutton" onclick="rooButton();">√x</button></td>
