@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device=width">
+    <title>JS Bin</title>
+    <style>
+        .cell {
+            display: inline-block;
+            border: 1px solid white;
+            background-color: lightgray;
+            width: 10px;
+            height: 10px;
+            margin: 0px 0px;
+        }
+    </style>
+</head>
+<body>
+    <button>clear</button>
+    <button>stop</button>
+    <button>next</button>
+    <button>start</button><hr/>
+    <div style="line-height:10px;">
+    <script>
+        const size=20;
+
+        for (i=0; i<size; i++){
+            for (j=0; j<size; j++){
+                id = i*size+j;
+                document.write('<div class=cell id=${id} onclick="Toggle(this, ${id});"></div>');
+            }
+            document.write("<br>");
+        }
+
+        function Toggle(element, id) {
+            if(element.style.backgroundColor == 'gray'){
+                element.style.backgroundColor = 'lightgray';
+            }
+            else {
+                element.style.backgroundColor = 'gray';
+            }
+        }
+    </script>
+    </div>
+</body>
+</html>
