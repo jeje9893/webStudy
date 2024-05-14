@@ -3,6 +3,9 @@
 
 <head>
     <style>
+        * {
+            box-sizing: border-box;
+        }
         table {
         }
         div {
@@ -15,6 +18,12 @@
             position: relative;
             width: 1360px;
             margin: 0;
+            gap: 15px;
+            justify-content: space-between;
+        }
+        
+        .wrap {
+            display: flex;
         }
 
         #header {
@@ -22,13 +31,17 @@
             width: 100%;
             height: 60px;
             top: 0;
+            background-color: #0c53b4;
         }
         #leftContent {
             float: left;
+            width: 340px;
         }
         #rightContent {
             float: right;
+            width: 1005px;
         }
+        
     </style>
 </head>
 
