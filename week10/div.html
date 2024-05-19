@@ -22,8 +22,8 @@
         }
 
         div {
-            border-style: solid;
-            border: solid 1px black;
+            /* border-style: solid;
+            border: solid 1px black; */
             width: 100%;
             height: 100%;
         }
@@ -43,11 +43,80 @@
         }
 
         #header {
-            position: sticky;
+            position: fixed;
             width: 100%;
             height: 60px;
             top: 0;
             background-color: #0c53b4;
+            z-index: 1;
+        }
+
+        #top-wrap {
+            position: relative;
+            margin: 0 auto;
+            width: 1400px;
+        }
+
+        #logo {
+            position: absolute;
+            width: 270px;
+        }
+
+        #topmenu {
+            position: absolute;
+            right: 200px;
+            width: 800px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #topmenu span {
+            position: relative;
+            font-size: 20px;
+            color: white;
+            font-weight: bold;
+            margin: 50px;
+        }
+
+        #gongji {}
+
+        #hakseng {}
+
+        #career {}
+
+        #navigator {
+            position: absolute;
+            right: 0px;
+            width: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #nav-box {
+            position: absolute;
+            left: 0px;
+            background: #164f9d;
+            border-color: #1b4d91;
+            height: 35px;
+            border-radius: 0;
+            padding: 10px 15px;
+            color: #ffffff91;
+            width: 110px;
+            margin: 0px;
+        }
+
+        #glasses {
+            position: absolute;
+            right: 3px;
+            background: #0e3e7e url(./files/아이콘\ 모음.png) no-repeat 2px 0px;
+            padding: 0;
+            margin: 0;
+            border-radius: 0;
+            border: 0;
+            width: 35px;
+            height: 35px;
         }
 
         .logo {
@@ -55,7 +124,7 @@
             margin-left: 30px;
             display: inline-block;
             font-size: 20px;
-            font-weight: 590;
+            font-weight: bold;
             color: white;
             font-family: inherit;
         }
@@ -68,6 +137,10 @@
             margin-right: 10px;
         }
 
+        #content {
+            position: relative;
+            top: 60px;
+        }
 
         #leftContent {
             float: left;
@@ -77,14 +150,173 @@
 
         .MyInfo {
             position: relative;
-            padding: 6% 7%;
+            padding: 2% 3%;
             width: 100%;
+            background-color: #07408d;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .MyInfo div {
+            display: inline-flex;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+
+        #info {
+            display: inline;
+            width: 200px;
+            position: relative;
+            top: 10px;
+            left: 10px;
+        }
+
+        #info #재학 {
+            position: relative;
+            left: 5px;
+            background-color: #5e9a1e;
+            display: inline;
+            font-size: 13px;
+            color: #fff;
+            border-radius: 3px;
+            padding: 3px 5px;
+            margin-left: 10px;
+        }
+
+        #profile-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 100px;
+        }
+
+        #note {
+            -webkit-animation: blink 1s linear infinite;
+            width: 79px;
+            color: #fff;
+            float: right;
+            padding: 5px 8px;
+            background-color: rgba(243, 152, 0, 0.85);
+            font-size: 14px;
+            font-weight: 900;
+            margin-top: 0px;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                background-color: rgba(243, 152, 0, 0.5);
+            }
+
+            50% {
+                /* color: #07408D; */
+                background-color: rgba(243, 152, 0, 1);
+            }
+        }
+
+        #note+div {
+            margin-left: 14px;
+            font-size: 15px;
+        }
+
+        #sang-dam {
+            margin-top: 0;
+        }
+
+        #sang-dam div {
+            display: inline;
+            float: left;
+            width: 22%;
+            height: fit-content;
+            background: #205399;
+            padding: 10px 0;
+            margin-left: 1%;
+            margin-bottom: 3px;
+            font-size: 20px;
+            color: #fff;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        #sang-dam div span {
+            display: block;
+            font-size: 15px;
+            font-weight: 1;
         }
 
         .TestList {
             position: relative;
             margin: 15px 0px;
+            border: solid 1px #cecece;
         }
+
+        ul {
+            list-style-type: none;
+        }
+        .TestList ul li {
+            
+            position: relative;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 43px;
+            color: #333;
+            margin: 0;
+            border-top: 1px solid #ecf2fe;
+        }
+
+        .TestList ul li .icon {
+            display: inline-block;
+            float: left;
+            width: 70px;
+            height: 43px;
+            margin-right: 15px;
+            background-color: #ecf2fe;
+            background-image: url(./files/아이콘\ 모음.png);
+            background-repeat: no-repeat;
+            border-top: 1px solid #fff;
+        }
+
+        .TestList ul li p {
+            position: absolute;
+            top: 12px;
+            right: 20px;
+            width: 50px;
+            height: 20px;
+            background: #e8e8e8;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 20px;
+            color: #555;
+            text-align: center;
+            padding: 0;
+        }
+
+        .TestList ul li .done {
+            background: #1c90c6;
+            color: #fff;
+        }
+
+        .TestList ul .list01 .icon {
+            background-position: 27px -65px;
+            border-top: none;
+        }
+
+        .TestList ul .list02 .icon {
+            background-position: -42px -65px;
+        }
+
+        .TestList ul .list03 .icon {
+            background-position: -110px -65px;
+        }
+
+        .TestList ul .list04 .icon {
+            background-position: -180px -65px;
+        }
+
+        .TestList ul .list05 .icon {
+            background-position: -248px -65px;
+        }
+
 
         .BannerImg {
             position: relative;
@@ -105,6 +337,7 @@
 
         .Right-Box {
             width: 200px;
+            height: 3000px;
         }
 
 
@@ -123,14 +356,84 @@
 
 <body>
     <div id="header">
-        <h1 class="logo"><img src="./files/동의대 마크.png" alt="동의대학교">DAP시스템</h1>
-        <span class="glyphicon glyphicon-bullhorn"></span>
+        <div id="top-wrap">
+            <div id="logo">
+                <h1 class="logo"><img src="./files/동의대 마크.png" alt="동의대학교">DAP시스템</h1>
+            </div>
+            <div id="topmenu">
+                <span id="gongji">📢공지사항</span>
+                <span id="hakseng">🎓학생정보시스템</span>
+                <span id="career">💼커리어</span>
+            </div>
+            <div id="navigator">
+                <div id="nav-box">검색</div>
+                <div id="glasses"></div>
+            </div>
+        </div>
     </div>
     <div id="content" class="main-container wrap">
         <div id="leftContent">
-            <div class="MyInfo">내정보</div>
-            <div class="TestList">적성검사</div>
-            <div class=" Mbox">자율설계 프로젝트</div>
+            <div class="MyInfo">
+                <div>
+                    <img src="./files/마동석.jpg" id="profile-img">
+                    <div id="info">
+                        <span>20212999</span>
+                        <br>
+                        <span style="font-size: 25px;">
+                            허재경
+                        </span>
+                        <span id="재학">재학</span>
+                    </div>
+                </div>
+                <div id="note">쪽지 (10)</div>
+                <div>나의 상담내역</div>
+                <div id="sang-dam">
+                    <div>2
+                        <span>학 과</span>
+                    </div>
+                    <div>0
+                        <span>진로취업</span>
+                    </div>
+                    <div>0
+                        <span>심 리</span>
+                    </div>
+                    <div>0
+                        <span>학 업</span>
+                    </div>
+                </div>
+            </div>
+            <div class="TestList">
+                <ul>
+                    <li class="list01">
+                        <span class="icon"></span>
+                        GRIT 검사
+                        <p class="done">작 성</p>
+                    </li>
+                    <li class="list02">
+                        <span class="icon"></span>
+                        직업적성검사
+                        <p>미작성</p>
+                    </li>
+                    <li class="list03">
+                        <span class="icon"></span>
+                        직업선호도 검사 S형
+                        <p>미작성</p>
+                    </li>
+                    <li class="list04">
+                        <span class="icon"></span>
+                        창업 적성검사
+                        <p>미작성</p>
+                    </li>
+                    <li class="list05">
+                        <span class="icon"></span>
+                        직업가치관 검사
+                        <p>미작성</p>
+                    </li>
+                </ul>
+            </div>
+            <div class=" Mbox">
+                <img src="./files/자율설계 프로젝트.jpg" alt="자율설계 프로젝트">
+            </div>
             <div class="MonthlyDoor Mbox">이달의 door</div>
         </div>
         <div id="rightContent" class="">
