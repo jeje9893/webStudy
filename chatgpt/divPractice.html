@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Layout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .header, .footer {
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+        }
+        .content {
+            padding: 20px;
+        }
+        .sidebar {
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        .main {
+            background-color: #fff;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+        }
+        .container > div {
+            flex: 1;
+        }
+        .container > .main {
+            flex: 3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Header</h1>
+</div>
+
+<div class="container">
+    <div class="sidebar">
+        <h2>Sidebar</h2>
+        <p>This is the sidebar content.</p>
+    </div>
+    <div class="main">
+        <h2>Main Content</h2>
+        <p>This is the main content area.</p>
+    </div>
+</div>
+
+<div class="content">
+    <h2>Additional Content</h2>
+    <p>This is additional content below the main section.</p>
+</div>
+
+<div class="footer">
+    <p>Footer</p>
+</div>
+
+</body>
+</html>
