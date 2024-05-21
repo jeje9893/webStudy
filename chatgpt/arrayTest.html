@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>목차와 내용</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        #toc {
+            background: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        #toc ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        #toc li {
+            margin: 5px 0;
+        }
+        #toc a {
+            text-decoration: none;
+            color: #333;
+        }
+        #toc a:hover {
+            text-decoration: underline;
+        }
+        #toc a.active {
+            color: blue;
+            font-weight: bold;
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .content-section h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div id="toc">
+    <h2>목차</h2>
+    <ul>
+        <li><a href="#section1" onclick="showSection('section1', event)">1. 섹션 1</a></li>
+        <li><a href="#section2" onclick="showSection('section2', event)">2. 섹션 2</a></li>
+        <li><a href="#section3" onclick="showSection('section3', event)">3. 섹션 3</a></li>
+        <li><a href="#section4" onclick="showSection('section4', event)">4. 섹션 4</a></li>
+    </ul>
+</div>
+
+<div class="content-section" id="section1">
+    <h2>1. 섹션 1</h2>
+    <p>섹션 1의 내용입니다. 여기에는 다양한 정보와 설명이 포함될 수 있습니다.</p>
+</div>
+
+<div class="content-section" id="section2">
+    <h2>2. 섹션 2</h2>
+    <p>섹션 2의 내용입니다. 이곳에는 추가적인 설명이나 예제가 포함될 수 있습니다.</p>
+</div>
+
+<div class="content-section" id="section3">
+    <h2>3. 섹션 3</h2>
+    <p>섹션 3의 내용입니다. 더 많은 정보를 여기에 추가할 수 있습니다.</p>
+</div>
+
+<div class="content-section" id="section4">
+    <h2>4. 섹션 4</h2>
+    <p>섹션 4의 내용입니다. 마지막 섹션으로, 결론이나 요약이 들어갈 수 있습니다.</p>
+</div>
+
+<script>
+    function showSection(sectionId, event) {
+        const sections = document.querySelectorAll('.content-section');
+        sections.forEach(section => {
+            if (section.id === sectionId) {
+                section.classList.add('active');
+            } else {
+                section.classList.remove('active');
+            }
+        });
+
+        const links = document.querySelectorAll('#toc a');
+        links.forEach(link => {
+            if (link.getAttribute('href') === `#${sectionId}`) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+
+        // Prevent the default anchor click behavior
+        if (event) {
+            event.preventDefault();
+        }
+    }
+
+    // 초기 로드 시 첫 번째 섹션 표시
+    document.addEventListener('DOMContentLoaded', function() {
+        showSection('section1');
+    });
+</script>
+
+</body>
+</html>

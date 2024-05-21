@@ -29,6 +29,10 @@
             height: 100%;
         }
 
+        a {
+            text-decoration: none;
+        }
+
         .main-container {
             position: relative;
             width: 1360px;
@@ -72,18 +76,27 @@
         #topmenu {
             position: absolute;
             right: 200px;
-            width: 800px;
+            width: 700px;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
         #topmenu span {
+            height: 100%;
+            width: 50%;
+            text-align: center;
             position: relative;
             font-size: 20px;
             color: white;
             font-weight: bold;
-            margin: 50px;
+            padding-top: 15px;
+            cursor: pointer;
+        }
+
+        #topmenu span:hover {
+            color: #0c53b4;
+            background-color: white;
         }
 
         #gongji {}
@@ -117,7 +130,7 @@
         #glasses {
             position: absolute;
             right: 3px;
-            background: #0e3e7e url(./files/아이콘\ 모음.png) no-repeat 2px 0px;
+            background: #0e3e7e url(./icons.png) no-repeat 2px 0px;
             padding: 0;
             margin: 0;
             border-radius: 0;
@@ -134,6 +147,10 @@
             font-weight: bold;
             color: white;
             font-family: inherit;
+        }
+
+        .logo:hover {
+            cursor: pointer;
         }
 
         img {
@@ -164,10 +181,30 @@
             font-weight: bold;
         }
 
+        .MyInfo .logout {
+            position: absolute;
+            right: 53px;
+            top: 20px;
+            width: 31px;
+            height: 31px;
+            border-radius: 3px;
+            background: url(./icons.png) no-repeat -237px -3px;
+            cursor: pointer;
+        }
+
+        .MyInfo .logout:hover {
+            background: url(./icons.png) no-repeat -261px -3px;
+            background-color: white;
+        }
+
         .MyInfo div {
             display: inline-flex;
             margin-top: 10px;
             margin-left: 10px;
+        }
+
+        .MyInfo .mySangdam {
+            margin: 0;
         }
 
         #info {
@@ -279,7 +316,7 @@
             height: 43px;
             margin-right: 15px;
             background-color: #ecf2fe;
-            background-image: url(./files/아이콘\ 모음.png);
+            background-image: url(./icons.png);
             background-repeat: no-repeat;
             border-top: 1px solid #fff;
         }
@@ -303,6 +340,17 @@
             background: #1c90c6;
             color: #fff;
         }
+
+        .TestList ul li .done:hover {
+            background: #1878a5;
+            cursor: pointer;
+        }
+
+        .TestList ul li .notDone:hover {
+            background: #bbbbbb;
+            cursor: pointer;
+        }
+
 
         .TestList ul .list01 .icon {
             background-position: 27px -65px;
@@ -352,6 +400,12 @@
             border-bottom: none;
         }
 
+        .tit .plus-button {
+            position: absolute;
+            right: 8px;
+            top: 8px;
+        }
+
         .cont {
             padding: 0;
             border: 1px solid #d0d3d6;
@@ -383,6 +437,12 @@
             margin-left: -61px;
             background-repeat: no-repeat;
             background-position: center;
+        }
+
+        .link .icon:hover {
+            cursor: pointer;
+            transition: 500ms top, 500ms opacity 500ms;
+            top: 47px;
         }
 
         .link p {
@@ -433,7 +493,7 @@
         }
 
         .con1 .icon {
-            background-image: url(./files/자기경영.png);
+            background-image: url(./self.png);
         }
 
         .con1 .percent-bar {
@@ -448,7 +508,7 @@
         }
 
         .con2 .icon {
-            background-image: url(./files/글로컬.png);
+            background-image: url(./glocal.png);
         }
 
         .con2 .percent-bar {
@@ -462,7 +522,7 @@
         }
 
         .con3 .icon {
-            background-image: url(./files/나눔.png);
+            background-image: url(./divide.png);
         }
 
         .con3 .percent-bar {
@@ -477,7 +537,7 @@
 
 
         .con4 .icon {
-            background-image: url(./files/소통.png);
+            background-image: url(./commu.png);
         }
 
         .con4 .percent-bar {
@@ -491,7 +551,7 @@
         }
 
         .con5 .icon {
-            background-image: url(./files/융합.png);
+            background-image: url(./merge.png);
         }
 
         .con5 .percent-bar {
@@ -506,7 +566,7 @@
 
 
         .con6 .icon {
-            background-image: url(./files/도전성취.png);
+            background-image: url(./challange.png);
         }
 
         .con6 .percent-bar {
@@ -616,6 +676,19 @@
             width: 50%;
             text-align: center;
         }
+        .inner div:hover {
+            cursor: pointer;
+            text-decoration:underline;
+            color:#0C53B4;
+        }
+
+        .inner h4 {
+            font-size: 18px;
+            font-family: inherit;
+            font-weight: 600;
+            line-height: 1.1;
+            color: inherit;
+        }
 
         .inner .left::after {
             content: '';
@@ -656,8 +729,19 @@
             color: #777;
         }
 
-        .tabs .b1 {
+        .tabs a {
+            text-decoration: none;
+            color: #777;
+        }
+
+        .tabs a:hover {
             color: #0c53b4;
+            font-weight: bold;
+        }
+
+        .tabs a.active {
+            color: #0c53b4;
+            font-weight: bold;
         }
 
         .tabs li::before {
@@ -677,7 +761,7 @@
 
         .plus-button {
             display: block;
-            background: url(./files/아이콘\ 모음.png) no-repeat -158px -8px;
+            background: url(./icons.png) no-repeat -158px -8px;
             padding: 0;
             top: 11px;
             cursor: pointer;
@@ -696,18 +780,32 @@
             padding: 20px 25px;
         }
 
-        .tabs-content .content {
+        .tabs-content .content-list {
             list-style: disc;
             position: relative;
             margin-left: 10px;
+            display: none;
         }
 
-        .tabs-content .content li {
+        .tabs-content .content-list.active {
+            list-style: disc;
+            position: relative;
+            margin-left: 10px;
+            display: block;
+        }
+
+        .tabs-content .content-list li {
             position: relative;
             margin-top: 5px;
         }
 
-        .tabs-content .content .date {
+        .tabs-content .content-list li:hover {
+            text-decoration: underline;
+            cursor: pointer;
+            color: #0C53B4;
+        }
+
+        .tabs-content .content-list .date {
             position: absolute;
             top: -1px;
             right: 0;
@@ -740,6 +838,11 @@
             border-bottom: #ddd 1px solid;
         }
 
+        .links li:hover {
+            cursor: pointer;
+            color: #0C53B4;
+        }
+
         .links li .icon {
             display: block;
             width: 50px;
@@ -760,14 +863,62 @@
             position: relative;
             margin: 15px 0px;
         }
+
+        .noContent {
+            border: solid 1px #000;
+            border-radius: 5px;
+            width: 100%;
+            height: 150px;
+            background-color: lightgray;
+            color: rgb(43, 42, 42);
+            font-size: large;
+            font-weight: 600;
+            text-align: center;
+
+        }
+
+        .MonthlyDoor {
+            height: 200px;
+        }
     </style>
+    <script>
+        function showSection(sectionId, event) {
+            const sections = document.querySelectorAll('.content-list');
+            sections.forEach(section => {
+                if (section.id === sectionId) {
+                    section.classList.add('active');
+                } else {
+                    section.classList.remove('active');
+                }
+            });
+
+            const links = document.querySelectorAll('.tabs a');
+            links.forEach(link => {
+                if (link.getAttribute('href') === `#${sectionId}`) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+
+            // Prevent the default anchor click behavior
+            if (event) {
+                event.preventDefault();
+            }
+        }
+
+        // 초기 로드 시 첫 번째 섹션 표시
+        document.addEventListener('DOMContentLoaded', function () {
+            showSection('section1');
+        });
+    </script>
 </head>
 
 <body>
     <div id="header">
         <div id="top-wrap">
             <div id="logo">
-                <h1 class="logo"><img src="./files/동의대 마크.png" alt="동의대학교">DAP시스템</h1>
+                <h1 class="logo"><img src="./deu.png"  alt="동의대학교">DAP시스템</h1>
             </div>
             <div id="topmenu">
                 <span id="gongji">📢공지사항</span>
@@ -783,8 +934,9 @@
     <div id="content" class="main-container wrap">
         <div id="leftContent">
             <div class="MyInfo">
+                <a class="logout"></a>
                 <div>
-                    <img src="./files/마동석.jpg" id="profile-img">
+                    <img src="./madong.jpg" id="profile-img">
                     <div id="info">
                         <span>20212999</span>
                         <br>
@@ -795,7 +947,7 @@
                     </div>
                 </div>
                 <div id="note">쪽지 (10)</div>
-                <div>나의 상담내역</div>
+                <div class="mySangdam">나의 상담내역</div>
                 <div id="sang-dam">
                     <div>2
                         <span>학 과</span>
@@ -821,32 +973,32 @@
                     <li class="list02">
                         <span class="icon"></span>
                         직업적성검사
-                        <p>미작성</p>
+                        <p class="notDone">미작성</p>
                     </li>
                     <li class="list03">
                         <span class="icon"></span>
                         직업선호도 검사 S형
-                        <p>미작성</p>
+                        <p class="notDone">미작성</p>
                     </li>
                     <li class="list04">
                         <span class="icon"></span>
                         창업 적성검사
-                        <p>미작성</p>
+                        <p class="notDone">미작성</p>
                     </li>
                     <li class="list05">
                         <span class="icon"></span>
                         직업가치관 검사
-                        <p>미작성</p>
+                        <p class="notDone">미작성</p>
                     </li>
                 </ul>
             </div>
-            <div class=" Mbox">
-                <img src="./files/자율설계 프로젝트.jpg" alt="자율설계 프로젝트">
+            <div class=" Mbox"> <!--자율설계 배너-->
+                <img src="./project.jpg" alt="자율설계 프로젝트">
             </div>
-            <div class="MonthlyDoor Mbox">이달의 door</div>
+            <div class="MonthlyDoor Mbox noContent">미구현 박스</div>
         </div>
         <div id="rightContent" class="">
-            <div class="jisoo">
+            <div class="jisoo"><!--나의 역량지수-->
                 <h3 class="tit">나의 역량지수(동일학년 최대포인트 대비)</h3>
                 <div class="cont">
                     <div class="progress con1">
@@ -920,9 +1072,11 @@
             </div>
             <div class="wrap midwrap">
                 <div class="Mid-Box">
-                    <div class="mileage wrap Mbox">
+                    <div class="mileage wrap Mbox"><!--통합마일리지와 채용정보안내-->
                         <div class="mileage">
-                            <h3 class="tit">통합마일리지</h3>
+                            <h3 class="tit">통합마일리지
+                                <span class="plus-button"></span>
+                            </h3>
                             <div class="tab-content">
                                 <div class="point">
                                     <table class="table table-bordered">
@@ -938,9 +1092,9 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td class="unit-P" style="font-size: 15px">0</td>
-                                                <td class="unit-P" style="font-size: 15px">15,000</td>
-                                                <td class="unit-P" style="font-size: 15px">0</td>
+                                                <td class="unit-P" style="font-size: 15px">0P</td>
+                                                <td class="unit-P" style="font-size: 15px">15,000P</td>
+                                                <td class="unit-P" style="font-size: 15px">0P</td>
                                             </tr>
                                             <tr>
                                                 <th class="total unit-P" scope="col" colspan="3"
@@ -954,34 +1108,46 @@
                         <div class="chaeyong">
                             <div class="inner">
                                 <div class="left">
-                                    <img src="./files/셔츠.png">
+                                    <img src="./shirt.png">
                                     <h4>채용정보<br>안내</h4>
 
                                 </div>
                                 <!-- <div class="mid-border"></div> -->
                                 <div class="right">
-                                    <img src="./files/deu-story.png">
+                                    <img src="./deu-story.png">
                                     <h4>DEU_STORY<br>(e-포트폴리오)</h4>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="notice Mbox">
+                    <div class="notice Mbox"><!--비교과프로그램공지-->
                         <div class="tit-box">
                             <ul class="tabs">
-                                <li class="b1">비교과프로그램공지</li>
-                                <li class="b2">학사공지</li>
-                                <li class="b3">장학공지</li>
-                                <li class="b4">취업공지</li>
-                                <li class="b5">교육/모집</li>
-                                <li class="b6">기숙사공지</li>
+                                <li class="b1"><a href="#section1" onclick="showSection('section1',event)"
+                                        class="">비교과프로그램공지</a>
+                                </li>
+                                <li class="b2"><a href="#section2" onclick="showSection('section2',event)"
+                                        class="">학사공지</a>
+                                </li>
+                                <li class="b3"><a href="#section3" onclick="showSection('section3',event)"
+                                        class="">장학공지</a>
+                                </li>
+                                <li class="b4"><a href="#section4" onclick="showSection('section4',event)"
+                                        class="">취업공지</a>
+                                </li>
+                                <li class="b5"><a href="#section5" onclick="showSection('section5',event)"
+                                        class="">교육/모집</a>
+                                </li>
+                                <li class="b6"><a href="#section6" onclick="showSection('section6',event)"
+                                        class="">기숙사공지</a>
+                                </li>
                                 <span class="plus-button"></span>
                             </ul>
                         </div>
                         <div class="box-content">
                             <div class="tabs-content">
-                                <ul class="content">
+                                <ul class="content-list" id="section1">
                                     <li>
                                         [대학혁신사업] 2024-1학기 창·문(창의적 문제해결) 신청 안내
                                         <span class="date">2024-05-13</span>
@@ -1007,40 +1173,170 @@
                                         <span class="date">2024-04-09</span>
                                     </li>
                                 </ul>
+                                <ul class="content-list" id="section2">
+                                    <li>
+                                        2024-하계계절수업 폐강 및 수강정정 안내
+                                        <span class="date">2024-05-20</span>
+                                    </li>
+                                    <li>
+                                        2024학년도 1학기 코로나(인플루엔자 포함) 방역조치 변경에 따른 출석인정일자 변경 안내
+                                        <span class="date">2024-05-17</span>
+                                    </li>
+                                    <li>
+                                        2024학년도 1학기 조기취업자 출석인정에 따른 최종신청 및 처리안내
+                                        <span class="date">2024-05-14</span>
+                                    </li>
+                                    <li>
+                                        2024-하계계절수업 전자출결 시스템 사용 안내
+                                        <span class="date">2024-04-30</span>
+                                    </li>
+                                    <li>
+                                        2024-하계계절수업 조기취업(창업)에 따른 출석인정신청 안내
+                                        <span class="date">2024-04-30</span>
+                                    </li>
+                                    <li>
+                                        2024-하계 계절수업 안내
+                                        <span class="date">2024-04-29</span>
+                                    </li>
+                                </ul>
+                                <ul class="content-list" id="section3">
+                                    <li>
+                                        2024-2학기 국가근로장학금 1차 학생신청 안내(국장 통합신청)
+                                        <span class="date">2024-05-17</span>
+                                    </li>
+                                    <li>
+                                        2024-1학기 국가근로 하계방학 중 집중근로 희망근로지 신청안내(이해관계자 회피 의무 준...
+                                        <span class="date">2024-05-17</span>
+                                    </li>
+                                    <li>
+                                        2024-2학기 국가장학금 1차 신청기간 안내
+                                        <span class="date">2024-05-16</span>
+                                    </li>
+                                    <li>
+                                        2024년 (재)나주교육진흥재단 해외 유학생 지원 장학금 지원 사업 안내 - 전남 나주 중...
+                                        <span class="date">2024-05-14</span>
+                                    </li>
+                                    <li>
+                                        2024년 상반기 강화군 대학생 등록금 지원사업 안내
+                                        <span class="date">2024-05-13</span>
+                                    </li>
+                                    <li>
+                                        2024년 서울장학재단 독립유공자 후손 장학금 선발 안내-학생본인 또는 부모님이 주민등록상...
+                                        <span class="date">2024-05-10</span>
+                                    </li>
+                                </ul>
+                                <ul class="content-list" id="section4">
+                                    <li>
+                                        2024년도 해외취업연수(K-MOVE스쿨)사업 과정별 설명회(모집안내)
+                                        <span class="date">2024-05-21</span>
+                                    </li>
+                                    <li>
+                                        [모집중] Chat GPT를 활용한 취업역량 UP 프로그램 신청 및 모집 안내(점프업 수당...
+                                        <span class="date">2024-05-17</span>
+                                    </li>
+                                    <li>
+                                        [모집중] (주)부산롯데호텔 기업탐방 및 직무능력향상 프로그램
+                                        <span class="date">2024-05-17</span>
+                                    </li>
+                                    <li>
+                                        2024 두드림(Do-Dream) 진로취업 FESTA 모집중
+                                        <span class="date">2024-05-13</span>
+                                    </li>
+                                    <li>
+                                        부산경제진흥원 연합 취업캠프"함께IRUDA" - 관광/MICE/항공서비스 취업캠프(5/31...
+                                        <span class="date">2024-05-10</span>
+                                    </li>
+                                    <li>
+                                        [모집중] 한국행정연구원장 특강 모집안내_법학과 산업체 전문가 멘토링 프로그램 1회차
+                                        <span class="date">2024-05-09</span>
+                                    </li>
+                                </ul>
+                                <ul class="content-list" id="section5">
+                                    <li>
+                                        [국제언어교육원] 2024학년도 5월 모의토익 접수안내(추가)- 온라인만 가능
+                                        <span class="date">2024-05-20</span>
+                                    </li>
+                                    <li>
+                                        [중앙도서관] 2024 동의인과 함께하는 원북원부산 독서릴레이 안내
+                                        <span class="date">2024-05-20</span>
+                                    </li>
+                                    <li>
+                                        2024학년도 하계 글로벌리더십 프로그램 모집 안내
+                                        <span class="date">2024-05-14</span>
+                                    </li>
+                                    <li>
+                                        2024학년도 하계 단기 현장실습학기제 학생 참여 안내
+                                        <span class="date">2024-05-09</span>
+                                    </li>
+                                    <li>
+                                        [SW인재양성사업] 디지털스마트부산아카데미 동의대 5기 교육 모집 공고
+                                        <span class="date">2024-05-08</span>
+                                    </li>
+                                    <li>
+                                        [현장실습지원센터] 2024학년도 하계 단기 표준현장실습학기제 기업참여 안내
+                                        <span class="date">2024-05-07</span>
+                                    </li>
+                                </ul>
+                                <ul class="content-list" id="section6">
+                                    <li>
+                                        2023-1학기 효민생활관/행복기숙사 관생 통합모집 공고
+                                        <span class="date">2022-12-20</span>
+                                    </li>
+                                    <li>
+                                        [모집] 효민생활관 지도교사(부사감) 모집
+                                        <span class="date">2022-11-17</span>
+                                    </li>
+                                    <li>
+                                        2022-2학기 효민생활관/행복기숙사 관생 모집
+                                        <span class="date">2022-07-13</span>
+                                    </li>
+                                    <li>
+                                        2022-1학기 효민생활관 / 행복기숙사 관생 모집
+                                        <span class="date">2021-12-21</span>
+                                    </li>
+                                    <li>
+                                        [모집]2018-2학기 효민생활관 지도교사(부사감) 모집 안내
+                                        <span class="date">2018-07-27</span>
+                                    </li>
+                                    <li>
+                                        [모집]2018학년도 2학기 효민생활관/행복기숙사 관생 모집안내
+                                        <span class="date">2018-07-11</span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                         <div class="contents"></div>
                     </div>
-                    <div class="notice Mbox">비교과프로그램 신청</div>
+                    <div class="notice Mbox noContent">비교과프로그램 신청</div>
                 </div>
                 <div class="Right-Box">
-                    <ul class="links">
+                    <ul class="links"><!--오른쪽 링크 목록-->
                         <li class="link01">
-                            <span class="icon" style="background-image: url(./files/icon07.png);"></span>
+                            <span class="icon" style="background-image: url(./icon07.png);"></span>
                             <span>통합마일리지 장학제도 및 산정기준</span>
                         </li>
                         <li class="link02">
-                            <span class="icon" style="background-image: url(./files/icon02.png);"></span>
+                            <span class="icon" style="background-image: url(./icon02.png);"></span>
                             <span>진로정보 활용가이드 진로개발 터틀북 (학생용)</span>
                         </li>
                         <li class="link03">
-                            <span class="icon" style="background-image: url(./files/이력서\ 및\ 자기소개서.png);"></span>
+                            <span class="icon" style="background-image: url(./file.png);"></span>
                             <span>이력서 및 자기소개서</span>
                         </li>
                         <li class="link04">
-                            <span class="icon" style="background-image: url(./files/icon10.png);"></span>
+                            <span class="icon" style="background-image: url(./icon10.png);"></span>
                             <span>한국고용정보원 온라인진로교육</span>
                         </li>
                         <li class="link05">
-                            <span class="icon" style="background-image: url(./files/현장실습운영시스템.png);"></span>
+                            <span class="icon" style="background-image: url(./icon13.png);"></span>
                             <span>현장실습 운영시스템</span>
                         </li>
                         <li class="link06">
-                            <span class="icon" style="background-image: url(./files/에듀스\ 온라인\ 취업솔루션.png);"></span>
+                            <span class="icon" style="background-image: url(./books.png);"></span>
                             <span>에듀스 온라인 취업솔루션</span>
                         </li>
                         <li class="link07">
-                            <span class="icon" style="background-image: url(./files/온라인\ 자격증\ 취득과정.png);"></span>
+                            <span class="icon" style="background-image: url(./online.png);"></span>
                             <span>온라인자격증 취득 과정(준비중)</span>
                         </li>
                     </ul>
