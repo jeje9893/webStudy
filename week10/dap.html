@@ -2,77 +2,1053 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
     <style>
-        table {
-            margin-top: 10;
-            width: 100%;
-            height: 1600px;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+
         }
+
+        table {}
+
+        body {
+
+            font-family: "나눔고딕", "Nanum Gothic", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 13px;
+            line-height: 1.428571429;
+            color: #333;
+            background-color: #fff
+        }
+
         div {
-            display: inline-block;
-            border-style: solid;
+            /* border-style: solid;
+            border: solid 1px black; */
             width: 100%;
             height: 100%;
         }
 
+        .main-container {
+            position: relative;
+            width: 1360px;
+            margin: 0 auto;
+            gap: 15px;
+            justify-content: space-between;
+        }
+
+        .wrap {
+            display: flex;
+            gap: 15px;
+            justify-content: space-between;
+        }
+
+        .midwrap {
+            display: flex;
+            gap: 15px;
+            justify-content: space-between;
+        }
+
         #header {
-            position: sticky;
+            position: fixed;
             width: 100%;
-            height: 100px;
+            height: 60px;
             top: 0;
+            background-color: #0c53b4;
+            z-index: 10;
+        }
+
+        #top-wrap {
+            position: relative;
+            margin: 0 auto;
+            width: 1400px;
+        }
+
+        #logo {
+            position: absolute;
+            width: 270px;
+        }
+
+        #topmenu {
+            position: absolute;
+            right: 200px;
+            width: 800px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #topmenu span {
+            position: relative;
+            font-size: 20px;
+            color: white;
+            font-weight: bold;
+            margin: 50px;
+        }
+
+        #gongji {}
+
+        #hakseng {}
+
+        #career {}
+
+        #navigator {
+            position: absolute;
+            right: 0px;
+            width: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #nav-box {
+            position: absolute;
+            left: 0px;
+            background: #164f9d;
+            border-color: #1b4d91;
+            height: 35px;
+            border-radius: 0;
+            padding: 10px 15px;
+            color: #ffffff91;
+            width: 110px;
+            margin: 0px;
+        }
+
+        #glasses {
+            position: absolute;
+            right: 3px;
+            background: #0e3e7e url(./files/아이콘\ 모음.png) no-repeat 2px 0px;
+            padding: 0;
+            margin: 0;
+            border-radius: 0;
+            border: 0;
+            width: 35px;
+            height: 35px;
+        }
+
+        .logo {
+            margin-top: 10px;
+            margin-left: 30px;
+            display: inline-block;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            font-family: inherit;
+        }
+
+        img {
+            vertical-align: middle;
+        }
+
+        .logo img {
+            margin-right: 10px;
+        }
+
+        #content {
+            position: relative;
+            top: 60px;
+        }
+
+        #leftContent {
+            float: left;
+            width: 340px;
+            margin-top: 10px;
+        }
+
+        .MyInfo {
+            position: relative;
+            padding: 2% 3%;
+            width: 100%;
+            background-color: #07408d;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .MyInfo div {
+            display: inline-flex;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+
+        #info {
+            display: inline;
+            width: 200px;
+            position: relative;
+            top: 10px;
+            left: 10px;
+        }
+
+        #info #재학 {
+            position: relative;
+            left: 5px;
+            background-color: #5e9a1e;
+            display: inline;
+            font-size: 13px;
+            color: #fff;
+            border-radius: 3px;
+            padding: 3px 5px;
+            margin-left: 10px;
+        }
+
+        #profile-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 100px;
+        }
+
+        #note {
+            -webkit-animation: blink 1s linear infinite;
+            width: 79px;
+            color: #fff;
+            float: right;
+            padding: 5px 8px;
+            background-color: rgba(243, 152, 0, 0.85);
+            font-size: 14px;
+            font-weight: 900;
+            margin-top: 0px;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                background-color: rgba(243, 152, 0, 0.5);
+            }
+
+            50% {
+                /* color: #07408D; */
+                background-color: rgba(243, 152, 0, 1);
+            }
+        }
+
+        #note+div {
+            margin-left: 14px;
+            font-size: 15px;
+        }
+
+        #sang-dam {
+            margin-top: 0;
+        }
+
+        #sang-dam div {
+            display: inline;
+            float: left;
+            width: 22%;
+            height: fit-content;
+            background: #205399;
+            padding: 10px 0;
+            margin-left: 1%;
+            margin-bottom: 3px;
+            font-size: 20px;
+            color: #fff;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        #sang-dam div span {
+            display: block;
+            font-size: 15px;
+            font-weight: 1;
+        }
+
+        .TestList {
+            position: relative;
+            margin: 15px 0px;
+            border: solid 1px #cecece;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        .TestList ul li {
+
+            position: relative;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 43px;
+            color: #333;
+            margin: 0;
+            border-top: 1px solid #ecf2fe;
+        }
+
+        .TestList ul li .icon {
+            display: inline-block;
+            float: left;
+            width: 70px;
+            height: 43px;
+            margin-right: 15px;
+            background-color: #ecf2fe;
+            background-image: url(./files/아이콘\ 모음.png);
+            background-repeat: no-repeat;
+            border-top: 1px solid #fff;
+        }
+
+        .TestList ul li p {
+            position: absolute;
+            top: 12px;
+            right: 20px;
+            width: 50px;
+            height: 20px;
+            background: #e8e8e8;
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 20px;
+            color: #555;
+            text-align: center;
+            padding: 0;
+        }
+
+        .TestList ul li .done {
+            background: #1c90c6;
+            color: #fff;
+        }
+
+        .TestList ul .list01 .icon {
+            background-position: 27px -65px;
+            border-top: none;
+        }
+
+        .TestList ul .list02 .icon {
+            background-position: -42px -65px;
+        }
+
+        .TestList ul .list03 .icon {
+            background-position: -110px -65px;
+        }
+
+        .TestList ul .list04 .icon {
+            background-position: -180px -65px;
+        }
+
+        .TestList ul .list05 .icon {
+            background-position: -248px -65px;
+        }
+
+
+        .BannerImg {
+            position: relative;
+            margin: 15px 0px;
+        }
+
+
+
+        #rightContent {
+            float: right;
+            width: 1005px;
+            margin-top: 10px;
+        }
+
+        .tit {
+            position: relative;
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 35px;
+            color: #1f3775;
+            margin: 0;
+            padding: 0 20px;
+            background: #f6f6f6;
+            border: 1px solid #d0d3d6;
+            border-bottom: none;
+        }
+
+        .cont {
+            padding: 0;
+            border: 1px solid #d0d3d6;
+            display: flex;
+        }
+
+        .link {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block;
+            width: 100%;
+            height: 210px;
+            color: #414a5f;
+            text-decoration: none;
+        }
+
+        .link .icon {
+            position: absolute;
+            top: 54px;
+            left: 50%;
+            z-index: 1;
+            display: inline-block;
+            width: 125px;
+            height: 105px;
+            margin-left: -61px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .link p {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            margin: 0 auto;
+            color: #000;
+            font-size: 17px;
+        }
+
+        .link p>strong {
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+
+        .link h4 {
+            margin: 20px 0 0 0;
+        }
+
+        .stit {
+            float: none;
+            clear: both;
+            font-size: 14px;
+            font-weight: 600;
+            color: #000;
+        }
+
+        .progress {
+            position: relative;
+            width: 16.66%;
+            height: 210px;
+            float: left;
+            text-align: center;
+            background: #fff;
+            box-shadow: none;
+            border-radius: 0;
+            margin: 0;
+            min-height: 200px;
+            display: flex;
+            align-items: flex-end;
+            border-left: 1px solid #d0d3d6;
+        }
+
+        .con1 {
+            border-left: none;
+        }
+
+        .con1 .icon {
+            background-image: url(./files/자기경영.png);
+        }
+
+        .con1 .percent-bar {
+            width: 100%;
+            height: 2%;
+            line-height: normal;
+            background-color: #fff100;
+            float: none;
+            bottom: 0;
+            position: absolute;
+
+        }
+
+        .con2 .icon {
+            background-image: url(./files/글로컬.png);
+        }
+
+        .con2 .percent-bar {
+            width: 100%;
+            height: 5%;
+            line-height: normal;
+            background-color: #fff100;
+            float: none;
+            bottom: 0;
+            position: absolute;
+        }
+
+        .con3 .icon {
+            background-image: url(./files/나눔.png);
+        }
+
+        .con3 .percent-bar {
+            width: 100%;
+            height: 4%;
+            line-height: normal;
+            background-color: #fff100;
+            float: none;
+            bottom: 0;
+            position: absolute;
+        }
+
+
+        .con4 .icon {
+            background-image: url(./files/소통.png);
+        }
+
+        .con4 .percent-bar {
+            width: 100%;
+            height: 2%;
+            line-height: normal;
+            background-color: #fff100;
+            float: none;
+            bottom: 0;
+            position: absolute;
+        }
+
+        .con5 .icon {
+            background-image: url(./files/융합.png);
+        }
+
+        .con5 .percent-bar {
+            width: 100%;
+            height: 0%;
+            line-height: normal;
+            background-color: #fff100;
+            float: none;
+            bottom: 0;
+            position: absolute;
+        }
+
+
+        .con6 .icon {
+            background-image: url(./files/도전성취.png);
+        }
+
+        .con6 .percent-bar {
+            width: 100%;
+            height: 6%;
+            line-height: normal;
+            background-color: #fff100;
+            float: none;
+            bottom: 0;
+            position: absolute;
+        }
+
+        .Mid-Box {
+            width: 792px;
+            float: left;
+        }
+
+        .mileage {
+            position: relative;
+            margin: 0px 0px;
+        }
+
+        .mileage .tit {
+            position: relative;
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 35px;
+            color: #1f3775;
+            margin: 0;
+            padding: 0 20px;
+            background: #f6f6f6;
+            border: 1px solid #d0d3d6;
+            border-bottom: none;
+        }
+
+        .point {
+            min-height: 164px;
+            align-items: center;
+            width: 389px;
+            display: flex;
+            border: 1px solid #d0d3d6;
+            padding: 10px 15px;
+        }
+
+        .table {
+            background: #fff;
+            border-top: #3d4049 solid 1px;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 0px;
+            width: 100%;
+            max-width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .table-bordered {
+            border: 1px solid #ddd;
+        }
+
+        .table.table-bordered>thead>tr>th {
+            vertical-align: middle;
+            color: #fff;
+            text-align: center;
+            border: none;
+            border-left: 1px solid #ECF3FF;
+            border-bottom: none;
+            font-weight: 600;
+            padding: 10px 20px;
+            background-color: #246DD1;
+        }
+
+        .table.table-bordered>tbody>tr>td {
+            background: #fafafa;
+            color: #333;
+            text-align: center;
+            font-weight: 600;
+            padding: 10px 20px;
+            border: #ECF3FF solid 1px;
+            vertical-align: middle;
+            word-break: keep-all;
+            line-height: 1.5;
+        }
+
+        .table.table-bordered>tbody>tr>.total {
+            background-color: #ECF3FF;
+            color: #0C53B4;
+            font-size: 25px;
+            text-align: center;
+            font-weight: 600;
+            padding: 10px 20px;
+            border: #ECF3FF solid 1px;
+        }
+
+        .chaeyong {}
+
+        .chaeyong .inner {
+            min-height: 200px;
+            align-items: center;
+            display: flex;
+            border: 1px solid #d0d3d6;
+            padding: 20px 25px;
+        }
+
+        .inner div {
+            position: relative;
+            display: block;
+            width: 50%;
+            text-align: center;
+        }
+
+        .inner .left::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 30px;
+            width: 1px;
+            height: 80px;
+            display: inline-block;
+            background: #ccc;
+        }
+
+        .notice .tit-box {
+            position: relative;
+            margin: 0;
+            padding: 0 20px;
+            background: #f6f6f6;
+            border: 1px solid #d0d3d6;
+            border-bottom: none;
+            position: relative;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 35px;
+            padding: 3px 11px;
+            margin: 0;
+            color: #777;
+            display: table;
+        }
+
+        .tabs li {
+            position: relative;
+            float: left;
+            display: block;
+            font-size: 14px;
+            line-height: 35px;
+            padding: 3px 8px;
+            margin: 0;
+            color: #777;
+        }
+
+        .tabs .b1 {
+            color: #0c53b4;
+        }
+
+        .tabs li::before {
+            content: '';
+            margin-left: 0px;
+            margin-right: 11px;
+            width: 1px;
+            height: 1px;
+            border: solid 1px;
+            border-color: #999;
+        }
+
+        .tabs li:first-child::before {
+            content: " ";
+            border: none;
+        }
+
+        .plus-button {
+            display: block;
+            background: url(./files/아이콘\ 모음.png) no-repeat -158px -8px;
+            padding: 0;
+            top: 11px;
+            cursor: pointer;
+            min-height: auto;
+            width: 18px;
+            height: 20px;
+        }
+
+        .tabs .plus-button {
+            position: relative;
+            left: 97%;
+        }
+
+        .tabs-content {
+            border: 1px solid #d0d3d6;
+            padding: 20px 25px;
+        }
+
+        .tabs-content .content {
+            list-style: disc;
+            position: relative;
+            margin-left: 10px;
+        }
+
+        .tabs-content .content li {
+            position: relative;
+            margin-top: 5px;
+        }
+
+        .tabs-content .content .date {
+            position: absolute;
+            top: -1px;
+            right: 0;
+            font-family: tahoma;
+            font-size: 12px;
+            color: #999;
+        }
+
+        .Right-Box {
+            width: 200px;
+            height: 3000px;
+            float: right;
+        }
+
+        .Right-Box .links {
+            margin-top: 15px;
+            width: 200px;
+            border: 1px solid #d0d3d6;
+        }
+
+        .links li {
+            position: relative;
+            display: flex;
+            font-weight: 600;
+            color: #333;
+            gap: 5px;
+            margin: 0;
+            padding: 20px 5px;
+            min-height: 91px;
+            border-bottom: #ddd 1px solid;
+        }
+
+        .links li .icon {
+            display: block;
+            width: 50px;
+            height: 50px;
+            margin: 0 auto;
+            background-position: center;
+            background-repeat: no-repeat;
+            flex: 1;
+        }
+
+        .links li span {
+            flex: 2;
+            word-break: keep-all;
+            text-align: center;
+        }
+
+        .Mbox {
+            position: relative;
+            margin: 15px 0px;
         }
     </style>
 </head>
 
 <body>
-    <div id="header">헤더</div>
-    <br/>
-    <table>
-        <colgroup>
-            <col width="300">
-            <col width="300">
-            <col width="300">
-            <col width="300">
-        </colgroup>
-        <tr>
-            <td>
-                <div id="myInfo">기본정보</div>
-            </td>
-            <td colspan="3">
-                <div id="ability">역량 지수</div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div id="test">검사</div>
-            </td>
-            <td>
-                <div id="mileage">마일리지</div>
-            </td>
-            <td>
-                <div id="deuStory">deu-Story</div>
-            </td>
-            <td rowspan="3">
-                <div id="links">링크 목록</div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div id="design">자율설계 광고</div>
-            </td>
-            <td colspan="2">
-                <div id="nonStudy">비교과프로그램</div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div>빈박스</div>
-            </td>
-            <td>
-                <div>빈박스</div>
-            </td>
-        </tr>
-    </table>
+    <div id="header">
+        <div id="top-wrap">
+            <div id="logo">
+                <h1 class="logo"><img src="./files/동의대 마크.png" alt="동의대학교">DAP시스템</h1>
+            </div>
+            <div id="topmenu">
+                <span id="gongji">📢공지사항</span>
+                <span id="hakseng">🎓학생정보시스템</span>
+                <span id="career">💼커리어</span>
+            </div>
+            <div id="navigator">
+                <div id="nav-box">검색</div>
+                <div id="glasses"></div>
+            </div>
+        </div>
+    </div>
+    <div id="content" class="main-container wrap">
+        <div id="leftContent">
+            <div class="MyInfo">
+                <div>
+                    <img src="./files/마동석.jpg" id="profile-img">
+                    <div id="info">
+                        <span>20212999</span>
+                        <br>
+                        <span style="font-size: 25px;">
+                            허재경
+                        </span>
+                        <span id="재학">재학</span>
+                    </div>
+                </div>
+                <div id="note">쪽지 (10)</div>
+                <div>나의 상담내역</div>
+                <div id="sang-dam">
+                    <div>2
+                        <span>학 과</span>
+                    </div>
+                    <div>0
+                        <span>진로취업</span>
+                    </div>
+                    <div>0
+                        <span>심 리</span>
+                    </div>
+                    <div>0
+                        <span>학 업</span>
+                    </div>
+                </div>
+            </div>
+            <div class="TestList">
+                <ul>
+                    <li class="list01">
+                        <span class="icon"></span>
+                        GRIT 검사
+                        <p class="done">작 성</p>
+                    </li>
+                    <li class="list02">
+                        <span class="icon"></span>
+                        직업적성검사
+                        <p>미작성</p>
+                    </li>
+                    <li class="list03">
+                        <span class="icon"></span>
+                        직업선호도 검사 S형
+                        <p>미작성</p>
+                    </li>
+                    <li class="list04">
+                        <span class="icon"></span>
+                        창업 적성검사
+                        <p>미작성</p>
+                    </li>
+                    <li class="list05">
+                        <span class="icon"></span>
+                        직업가치관 검사
+                        <p>미작성</p>
+                    </li>
+                </ul>
+            </div>
+            <div class=" Mbox">
+                <img src="./files/자율설계 프로젝트.jpg" alt="자율설계 프로젝트">
+            </div>
+            <div class="MonthlyDoor Mbox">이달의 door</div>
+        </div>
+        <div id="rightContent" class="">
+            <div class="jisoo">
+                <h3 class="tit">나의 역량지수(동일학년 최대포인트 대비)</h3>
+                <div class="cont">
+                    <div class="progress con1">
+                        <div class="percent-bar"></div>
+                        <a class="link">
+                            <h4 class="stit">자기경영
+                            </h4>
+                            <span class="icon"></span>
+                            <p>
+                                <strong>60</strong>
+                                /5,690
+                            </p>
+                        </a>
+                    </div>
+                    <div class="progress con2">
+                        <div class="percent-bar"></div>
+                        <a class="link">
+                            <h4 class="stit">글로컬</h4>
+                            <span class="icon"></span>
+                            <p>
+                                <strong>40</strong>
+                                /970
+                            </p>
+                        </a>
+                    </div>
+                    <div class="progress con3">
+                        <div class="percent-bar"></div>
+                        <a class="link">
+                            <h4 class="stit">나눔</h4>
+                            <span class="icon"></span>
+                            <p>
+                                <strong>70</strong>
+                                /1,980
+                            </p>
+                        </a>
+                    </div>
+                    <div class="progress con4">
+                        <div class="percent-bar"></div>
+                        <a class="link">
+                            <h4 class="stit">소통</h4>
+                            <span class="icon"></span>
+                            <p>
+                                <strong>30</strong>
+                                /1,300
+                            </p>
+                        </a>
+                    </div>
+                    <div class="progress con5">
+                        <div class="percent-bar"></div>
+                        <a class="link">
+                            <h4 class="stit">융합</h4>
+                            <span class="icon"></span>
+                            <p>
+                                <strong>0</strong>
+                                /990
+                            </p>
+                        </a>
+                    </div>
+                    <div class="progress con6">
+                        <div class="percent-bar"></div>
+                        <a class="link">
+                            <h4 class="stit">도전성취</h4>
+                            <span class="icon"></span>
+                            <p>
+                                <strong>100</strong>
+                                /1,630
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="wrap midwrap">
+                <div class="Mid-Box">
+                    <div class="mileage wrap Mbox">
+                        <div class="mileage">
+                            <h3 class="tit">통합마일리지</h3>
+                            <div class="tab-content">
+                                <div class="point">
+                                    <table class="table table-bordered">
+                                        <colgroup>
+                                            <col span="3" style="width: 33%">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">실용지성</th>
+                                                <th scope="col">협력인성</th>
+                                                <th scope="col">창의실천</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="unit-P" style="font-size: 15px">0</td>
+                                                <td class="unit-P" style="font-size: 15px">15,000</td>
+                                                <td class="unit-P" style="font-size: 15px">0</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="total unit-P" scope="col" colspan="3"
+                                                    style="font-size: 25px">15,000P</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chaeyong">
+                            <div class="inner">
+                                <div class="left">
+                                    <img src="./files/셔츠.png">
+                                    <h4>채용정보<br>안내</h4>
+
+                                </div>
+                                <!-- <div class="mid-border"></div> -->
+                                <div class="right">
+                                    <img src="./files/deu-story.png">
+                                    <h4>DEU_STORY<br>(e-포트폴리오)</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="notice Mbox">
+                        <div class="tit-box">
+                            <ul class="tabs">
+                                <li class="b1">비교과프로그램공지</li>
+                                <li class="b2">학사공지</li>
+                                <li class="b3">장학공지</li>
+                                <li class="b4">취업공지</li>
+                                <li class="b5">교육/모집</li>
+                                <li class="b6">기숙사공지</li>
+                                <span class="plus-button"></span>
+                            </ul>
+                        </div>
+                        <div class="box-content">
+                            <div class="tabs-content">
+                                <ul class="content">
+                                    <li>
+                                        [대학혁신사업] 2024-1학기 창·문(창의적 문제해결) 신청 안내
+                                        <span class="date">2024-05-13</span>
+                                    </li>
+                                    <li>
+                                        [대학혁신사업] 2024학년도 자율설계 프로젝트 모집 안내
+                                        <span class="date">2024-05-07</span>
+                                    </li>
+                                    <li>
+                                        [대학혁신사업] 2024학년도 DEU 학습법 특강(2차) 신청 안내
+                                        <span class="date">2024-05-02</span>
+                                    </li>
+                                    <li>
+                                        [대학혁신사업] 2024학년도 소·우·파 발표 경연대회 신청 안내
+                                        <span class="date">2024-04-22</span>
+                                    </li>
+                                    <li>
+                                        [콜라보교육센터] 2024학년도 편지쓰기 콘테스트 신청안내
+                                        <span class="date">2024-04-12</span>
+                                    </li>
+                                    <li>
+                                        [대학혁신사업] 2024-1학기 오프라인 DEU 학습법 특강 신청 안내
+                                        <span class="date">2024-04-09</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="contents"></div>
+                    </div>
+                    <div class="notice Mbox">비교과프로그램 신청</div>
+                </div>
+                <div class="Right-Box">
+                    <ul class="links">
+                        <li class="link01">
+                            <span class="icon" style="background-image: url(./files/icon07.png);"></span>
+                            <span>통합마일리지 장학제도 및 산정기준</span>
+                        </li>
+                        <li class="link02">
+                            <span class="icon" style="background-image: url(./files/icon02.png);"></span>
+                            <span>진로정보 활용가이드 진로개발 터틀북 (학생용)</span>
+                        </li>
+                        <li class="link03">
+                            <span class="icon" style="background-image: url(./files/이력서\ 및\ 자기소개서.png);"></span>
+                            <span>이력서 및 자기소개서</span>
+                        </li>
+                        <li class="link04">
+                            <span class="icon" style="background-image: url(./files/icon10.png);"></span>
+                            <span>한국고용정보원 온라인진로교육</span>
+                        </li>
+                        <li class="link05">
+                            <span class="icon" style="background-image: url(./files/현장실습운영시스템.png);"></span>
+                            <span>현장실습 운영시스템</span>
+                        </li>
+                        <li class="link06">
+                            <span class="icon" style="background-image: url(./files/에듀스\ 온라인\ 취업솔루션.png);"></span>
+                            <span>에듀스 온라인 취업솔루션</span>
+                        </li>
+                        <li class="link07">
+                            <span class="icon" style="background-image: url(./files/온라인\ 자격증\ 취득과정.png);"></span>
+                            <span>온라인자격증 취득 과정(준비중)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
 </body>
 
 </html>

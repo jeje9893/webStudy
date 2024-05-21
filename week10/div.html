@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
     <style>
         * {
             box-sizing: border-box;
@@ -37,6 +38,12 @@
         }
 
         .wrap {
+            display: flex;
+            gap: 15px;
+            justify-content: space-between;
+        }
+
+        .midwrap {
             display: flex;
             gap: 15px;
             justify-content: space-between;
@@ -598,8 +605,9 @@
         .chaeyong .inner {
             min-height: 200px;
             align-items: center;
-            width: 389px;
             display: flex;
+            border: 1px solid #d0d3d6;
+            padding: 20px 25px;
         }
 
         .inner div {
@@ -620,10 +628,132 @@
             background: #ccc;
         }
 
+        .notice .tit-box {
+            position: relative;
+            margin: 0;
+            padding: 0 20px;
+            background: #f6f6f6;
+            border: 1px solid #d0d3d6;
+            border-bottom: none;
+            position: relative;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 35px;
+            padding: 3px 11px;
+            margin: 0;
+            color: #777;
+            display: table;
+        }
+
+        .tabs li {
+            position: relative;
+            float: left;
+            display: block;
+            font-size: 14px;
+            line-height: 35px;
+            padding: 3px 8px;
+            margin: 0;
+            color: #777;
+        }
+
+        .tabs .b1 {
+            color: #0c53b4;
+        }
+
+        .tabs li::before {
+            content: '';
+            margin-left: 0px;
+            margin-right: 11px;
+            width: 1px;
+            height: 1px;
+            border: solid 1px;
+            border-color: #999;
+        }
+
+        .tabs li:first-child::before {
+            content: " ";
+            border: none;
+        }
+
+        .plus-button {
+            display: block;
+            background: url(./files/아이콘\ 모음.png) no-repeat -158px -8px;
+            padding: 0;
+            top: 11px;
+            cursor: pointer;
+            min-height: auto;
+            width: 18px;
+            height: 20px;
+        }
+
+        .tabs .plus-button {
+            position: relative;
+            left: 97%;
+        }
+
+        .tabs-content {
+            border: 1px solid #d0d3d6;
+            padding: 20px 25px;
+        }
+
+        .tabs-content .content {
+            list-style: disc;
+            position: relative;
+            margin-left: 10px;
+        }
+
+        .tabs-content .content li {
+            position: relative;
+            margin-top: 5px;
+        }
+
+        .tabs-content .content .date {
+            position: absolute;
+            top: -1px;
+            right: 0;
+            font-family: tahoma;
+            font-size: 12px;
+            color: #999;
+        }
+
         .Right-Box {
             width: 200px;
             height: 3000px;
             float: right;
+        }
+
+        .Right-Box .links {
+            margin-top: 15px;
+            width: 200px;
+            border: 1px solid #d0d3d6;
+        }
+
+        .links li {
+            position: relative;
+            display: flex;
+            font-weight: 600;
+            color: #333;
+            gap: 5px;
+            margin: 0;
+            padding: 20px 5px;
+            min-height: 91px;
+            border-bottom: #ddd 1px solid;
+        }
+
+        .links li .icon {
+            display: block;
+            width: 50px;
+            height: 50px;
+            margin: 0 auto;
+            background-position: center;
+            background-repeat: no-repeat;
+            flex: 1;
+        }
+
+        .links li span {
+            flex: 2;
+            word-break: keep-all;
+            text-align: center;
         }
 
         .Mbox {
@@ -716,7 +846,7 @@
             <div class="MonthlyDoor Mbox">이달의 door</div>
         </div>
         <div id="rightContent" class="">
-            <div>
+            <div class="jisoo">
                 <h3 class="tit">나의 역량지수(동일학년 최대포인트 대비)</h3>
                 <div class="cont">
                     <div class="progress con1">
@@ -788,7 +918,7 @@
                     </div>
                 </div>
             </div>
-            <div class="wrap">
+            <div class="wrap midwrap">
                 <div class="Mid-Box">
                     <div class="mileage wrap Mbox">
                         <div class="mileage">
@@ -826,7 +956,7 @@
                                 <div class="left">
                                     <img src="./files/셔츠.png">
                                     <h4>채용정보<br>안내</h4>
-                                    
+
                                 </div>
                                 <!-- <div class="mid-border"></div> -->
                                 <div class="right">
@@ -837,11 +967,85 @@
                         </div>
                     </div>
 
+                    <div class="notice Mbox">
+                        <div class="tit-box">
+                            <ul class="tabs">
+                                <li class="b1">비교과프로그램공지</li>
+                                <li class="b2">학사공지</li>
+                                <li class="b3">장학공지</li>
+                                <li class="b4">취업공지</li>
+                                <li class="b5">교육/모집</li>
+                                <li class="b6">기숙사공지</li>
+                                <span class="plus-button"></span>
+                            </ul>
+                        </div>
+                        <div class="box-content">
+                            <div class="tabs-content">
+                                <ul class="content">
+                                    <li>
+                                        [대학혁신사업] 2024-1학기 창·문(창의적 문제해결) 신청 안내
+                                        <span class="date">2024-05-13</span>
+                                    </li>
+                                    <li>
+                                        [대학혁신사업] 2024학년도 자율설계 프로젝트 모집 안내
+                                        <span class="date">2024-05-07</span>
+                                    </li>
+                                    <li>
+                                        [대학혁신사업] 2024학년도 DEU 학습법 특강(2차) 신청 안내
+                                        <span class="date">2024-05-02</span>
+                                    </li>
+                                    <li>
+                                        [대학혁신사업] 2024학년도 소·우·파 발표 경연대회 신청 안내
+                                        <span class="date">2024-04-22</span>
+                                    </li>
+                                    <li>
+                                        [콜라보교육센터] 2024학년도 편지쓰기 콘테스트 신청안내
+                                        <span class="date">2024-04-12</span>
+                                    </li>
+                                    <li>
+                                        [대학혁신사업] 2024-1학기 오프라인 DEU 학습법 특강 신청 안내
+                                        <span class="date">2024-04-09</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="contents"></div>
+                    </div>
+                    <div class="notice Mbox">비교과프로그램 신청</div>
                 </div>
-                <div class="notice Mbox">비교과프로그램 공지</div>
-                <div class="notice Mbox">비교과프로그램 신청</div>
+                <div class="Right-Box">
+                    <ul class="links">
+                        <li class="link01">
+                            <span class="icon" style="background-image: url(./files/icon07.png);"></span>
+                            <span>통합마일리지 장학제도 및 산정기준</span>
+                        </li>
+                        <li class="link02">
+                            <span class="icon" style="background-image: url(./files/icon02.png);"></span>
+                            <span>진로정보 활용가이드 진로개발 터틀북 (학생용)</span>
+                        </li>
+                        <li class="link03">
+                            <span class="icon" style="background-image: url(./files/이력서\ 및\ 자기소개서.png);"></span>
+                            <span>이력서 및 자기소개서</span>
+                        </li>
+                        <li class="link04">
+                            <span class="icon" style="background-image: url(./files/icon10.png);"></span>
+                            <span>한국고용정보원 온라인진로교육</span>
+                        </li>
+                        <li class="link05">
+                            <span class="icon" style="background-image: url(./files/현장실습운영시스템.png);"></span>
+                            <span>현장실습 운영시스템</span>
+                        </li>
+                        <li class="link06">
+                            <span class="icon" style="background-image: url(./files/에듀스\ 온라인\ 취업솔루션.png);"></span>
+                            <span>에듀스 온라인 취업솔루션</span>
+                        </li>
+                        <li class="link07">
+                            <span class="icon" style="background-image: url(./files/온라인\ 자격증\ 취득과정.png);"></span>
+                            <span>온라인자격증 취득 과정(준비중)</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="Right-Box">오른쪽 리스트</div>
         </div>
     </div>
     </div>
