@@ -48,7 +48,7 @@
             height: 60px;
             top: 0;
             background-color: #0c53b4;
-            z-index: 1;
+            z-index: 10;
         }
 
         #top-wrap {
@@ -253,8 +253,9 @@
         ul {
             list-style-type: none;
         }
+
         .TestList ul li {
-            
+
             position: relative;
             font-size: 14px;
             font-weight: 600;
@@ -331,25 +332,303 @@
             margin-top: 10px;
         }
 
+        .tit {
+            position: relative;
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 35px;
+            color: #1f3775;
+            margin: 0;
+            padding: 0 20px;
+            background: #f6f6f6;
+            border: 1px solid #d0d3d6;
+            border-bottom: none;
+        }
+
+        .cont {
+            padding: 0;
+            border: 1px solid #d0d3d6;
+            display: flex;
+        }
+
+        .link {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block;
+            width: 100%;
+            height: 210px;
+            color: #414a5f;
+            text-decoration: none;
+        }
+
+        .link .icon {
+            position: absolute;
+            top: 54px;
+            left: 50%;
+            z-index: 1;
+            display: inline-block;
+            width: 125px;
+            height: 105px;
+            margin-left: -61px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .link p {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            margin: 0 auto;
+            color: #000;
+            font-size: 17px;
+        }
+
+        .link p>strong {
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+
+        .link h4 {
+            margin: 20px 0 0 0;
+        }
+
+        .stit {
+            float: none;
+            clear: both;
+            font-size: 14px;
+            font-weight: 600;
+            color: #000;
+        }
+
+        .progress {
+            position: relative;
+            width: 16.66%;
+            height: 210px;
+            float: left;
+            text-align: center;
+            background: #fff;
+            box-shadow: none;
+            border-radius: 0;
+            margin: 0;
+            min-height: 200px;
+            display: flex;
+            align-items: flex-end;
+            border-left: 1px solid #d0d3d6;
+        }
+
+        .con1 {
+            border-left: none;
+        }
+
+        .con1 .icon {
+            background-image: url(./files/자기경영.png);
+        }
+
+        .con1 .percent-bar {
+            width: 100%;
+            height: 2%;
+            line-height: normal;
+            background-color: #fff100;
+            float: none;
+            bottom: 0;
+            position: absolute;
+
+        }
+
+        .con2 .icon {
+            background-image: url(./files/글로컬.png);
+        }
+
+        .con2 .percent-bar {
+            width: 100%;
+            height: 5%;
+            line-height: normal;
+            background-color: #fff100;
+            float: none;
+            bottom: 0;
+            position: absolute;
+        }
+
+        .con3 .icon {
+            background-image: url(./files/나눔.png);
+        }
+
+        .con3 .percent-bar {
+            width: 100%;
+            height: 4%;
+            line-height: normal;
+            background-color: #fff100;
+            float: none;
+            bottom: 0;
+            position: absolute;
+        }
+
+
+        .con4 .icon {
+            background-image: url(./files/소통.png);
+        }
+
+        .con4 .percent-bar {
+            width: 100%;
+            height: 2%;
+            line-height: normal;
+            background-color: #fff100;
+            float: none;
+            bottom: 0;
+            position: absolute;
+        }
+
+        .con5 .icon {
+            background-image: url(./files/융합.png);
+        }
+
+        .con5 .percent-bar {
+            width: 100%;
+            height: 0%;
+            line-height: normal;
+            background-color: #fff100;
+            float: none;
+            bottom: 0;
+            position: absolute;
+        }
+
+
+        .con6 .icon {
+            background-image: url(./files/도전성취.png);
+        }
+
+        .con6 .percent-bar {
+            width: 100%;
+            height: 6%;
+            line-height: normal;
+            background-color: #fff100;
+            float: none;
+            bottom: 0;
+            position: absolute;
+        }
+
         .Mid-Box {
             width: 792px;
+            float: left;
+        }
+
+        .mileage {
+            position: relative;
+            margin: 0px 0px;
+        }
+
+        .mileage .tit {
+            position: relative;
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 35px;
+            color: #1f3775;
+            margin: 0;
+            padding: 0 20px;
+            background: #f6f6f6;
+            border: 1px solid #d0d3d6;
+            border-bottom: none;
+        }
+
+        .point {
+            min-height: 164px;
+            align-items: center;
+            width: 389px;
+            display: flex;
+            border: 1px solid #d0d3d6;
+            padding: 10px 15px;
+        }
+
+        .table {
+            background: #fff;
+            border-top: #3d4049 solid 1px;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 0px;
+            width: 100%;
+            max-width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .table-bordered {
+            border: 1px solid #ddd;
+        }
+
+        .table.table-bordered>thead>tr>th {
+            vertical-align: middle;
+            color: #fff;
+            text-align: center;
+            border: none;
+            border-left: 1px solid #ECF3FF;
+            border-bottom: none;
+            font-weight: 600;
+            padding: 10px 20px;
+            background-color: #246DD1;
+        }
+
+        .table.table-bordered>tbody>tr>td {
+            background: #fafafa;
+            color: #333;
+            text-align: center;
+            font-weight: 600;
+            padding: 10px 20px;
+            border: #ECF3FF solid 1px;
+            vertical-align: middle;
+            word-break: keep-all;
+            line-height: 1.5;
+        }
+
+        .table.table-bordered>tbody>tr>.total {
+            background-color: #ECF3FF;
+            color: #0C53B4;
+            font-size: 25px;
+            text-align: center;
+            font-weight: 600;
+            padding: 10px 20px;
+            border: #ECF3FF solid 1px;
+        }
+
+        .chaeyong {}
+
+        .chaeyong .inner {
+            min-height: 200px;
+            align-items: center;
+            width: 389px;
+            display: flex;
+        }
+
+        .inner div {
+            position: relative;
+            display: block;
+            width: 50%;
+            text-align: center;
+        }
+
+        .inner .left::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 30px;
+            width: 1px;
+            height: 80px;
+            display: inline-block;
+            background: #ccc;
         }
 
         .Right-Box {
             width: 200px;
             height: 3000px;
+            float: right;
         }
-
-
 
         .Mbox {
             position: relative;
             margin: 15px 0px;
-        }
-
-        .InnerBox {
-            position: relative;
-            margin: 0px 0px;
         }
     </style>
 </head>
@@ -437,19 +716,134 @@
             <div class="MonthlyDoor Mbox">이달의 door</div>
         </div>
         <div id="rightContent" class="">
-            <div>나의 역량지수</div>
+            <div>
+                <h3 class="tit">나의 역량지수(동일학년 최대포인트 대비)</h3>
+                <div class="cont">
+                    <div class="progress con1">
+                        <div class="percent-bar"></div>
+                        <a class="link">
+                            <h4 class="stit">자기경영
+                            </h4>
+                            <span class="icon"></span>
+                            <p>
+                                <strong>60</strong>
+                                /5,690
+                            </p>
+                        </a>
+                    </div>
+                    <div class="progress con2">
+                        <div class="percent-bar"></div>
+                        <a class="link">
+                            <h4 class="stit">글로컬</h4>
+                            <span class="icon"></span>
+                            <p>
+                                <strong>40</strong>
+                                /970
+                            </p>
+                        </a>
+                    </div>
+                    <div class="progress con3">
+                        <div class="percent-bar"></div>
+                        <a class="link">
+                            <h4 class="stit">나눔</h4>
+                            <span class="icon"></span>
+                            <p>
+                                <strong>70</strong>
+                                /1,980
+                            </p>
+                        </a>
+                    </div>
+                    <div class="progress con4">
+                        <div class="percent-bar"></div>
+                        <a class="link">
+                            <h4 class="stit">소통</h4>
+                            <span class="icon"></span>
+                            <p>
+                                <strong>30</strong>
+                                /1,300
+                            </p>
+                        </a>
+                    </div>
+                    <div class="progress con5">
+                        <div class="percent-bar"></div>
+                        <a class="link">
+                            <h4 class="stit">융합</h4>
+                            <span class="icon"></span>
+                            <p>
+                                <strong>0</strong>
+                                /990
+                            </p>
+                        </a>
+                    </div>
+                    <div class="progress con6">
+                        <div class="percent-bar"></div>
+                        <a class="link">
+                            <h4 class="stit">도전성취</h4>
+                            <span class="icon"></span>
+                            <p>
+                                <strong>100</strong>
+                                /1,630
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
             <div class="wrap">
                 <div class="Mid-Box">
                     <div class="mileage wrap Mbox">
-                        <div class="InnerBox">통합마일리지</div>
-                        <div>채용정보 안내</div>
+                        <div class="mileage">
+                            <h3 class="tit">통합마일리지</h3>
+                            <div class="tab-content">
+                                <div class="point">
+                                    <table class="table table-bordered">
+                                        <colgroup>
+                                            <col span="3" style="width: 33%">
+                                        </colgroup>
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">실용지성</th>
+                                                <th scope="col">협력인성</th>
+                                                <th scope="col">창의실천</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="unit-P" style="font-size: 15px">0</td>
+                                                <td class="unit-P" style="font-size: 15px">15,000</td>
+                                                <td class="unit-P" style="font-size: 15px">0</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="total unit-P" scope="col" colspan="3"
+                                                    style="font-size: 25px">15,000P</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chaeyong">
+                            <div class="inner">
+                                <div class="left">
+                                    <img src="./files/셔츠.png">
+                                    <h4>채용정보<br>안내</h4>
+                                    
+                                </div>
+                                <!-- <div class="mid-border"></div> -->
+                                <div class="right">
+                                    <img src="./files/deu-story.png">
+                                    <h4>DEU_STORY<br>(e-포트폴리오)</h4>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="notice Mbox">비교과프로그램 공지</div>
-                    <div class="notice Mbox">비교과프로그램 신청</div>
+
                 </div>
-                <div class="Right-Box">오른쪽 리스트</div>
+                <div class="notice Mbox">비교과프로그램 공지</div>
+                <div class="notice Mbox">비교과프로그램 신청</div>
             </div>
+            <div class="Right-Box">오른쪽 리스트</div>
         </div>
+    </div>
     </div>
 </body>
 
