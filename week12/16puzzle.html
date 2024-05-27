@@ -6,69 +6,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>16 Puzzle</title>
     <style>
+        /* body 스타일 설정: 페이지를 중앙에 배치하고 배경색을 설정 */
         body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
+            display: flex; /* Flexbox 레이아웃을 사용하여 중앙 배치 */
+            flex-direction: column; /* 세로로 정렬 */
+            justify-content: center; /* 세로 방향 중앙 정렬 */
+            align-items: center; /* 가로 방향 중앙 정렬 */
+            height: 100vh; /* 전체 높이를 100%로 설정 */
+            margin: 0; /* 기본 여백 제거 */
+            background-color: #f0f0f0; /* 배경색 설정 */
         }
 
+        /* .container 스타일 설정: 퍼즐 타일을 그리드 레이아웃으로 배치 */
         .container {
-            display: grid;
-            grid-template-columns: repeat(4, 100px);
-            grid-gap: 5px;
-            margin-bottom: 20px;
+            display: grid; /* 그리드 레이아웃 사용 */
+            grid-template-columns: repeat(4, 100px); /* 4열, 각 열의 너비는 100px */
+            grid-gap: 5px; /* 타일 사이 간격 5px */
+            margin-bottom: 20px; /* 아래쪽 여백 20px */
         }
 
+        /* .tile 스타일 설정: 타일의 크기와 스타일 설정 */
         .tile {
-            width: 100px;
-            height: 100px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #3498db;
-            color: white;
-            font-size: 2em;
-            cursor: pointer;
-            user-select: none;
+            width: 100px; /* 타일 너비 100px */
+            height: 100px; /* 타일 높이 100px */
+            display: flex; /* Flexbox 레이아웃 사용 */
+            justify-content: center; /* 가로 방향 중앙 정렬 */
+            align-items: center; /* 세로 방향 중앙 정렬 */
+            background-color: #3498db; /* 타일 배경색 설정 */
+            color: white; /* 타일 글자색 설정 */
+            font-size: 2em; /* 타일 글자 크기 설정 */
+            cursor: pointer; /* 커서를 포인터로 설정 */
+            user-select: none; /* 사용자가 텍스트를 선택할 수 없게 설정 */
         }
 
+        /* .empty 스타일 설정: 빈 타일의 배경색과 커서 스타일 */
         .empty {
-            background-color: #ecf0f1;
-            cursor: default;
+            background-color: #ecf0f1; /* 빈 타일 배경색 설정 */
+            cursor: default; /* 기본 커서 설정 */
         }
 
+        /* .button-container 스타일 설정: 버튼 컨테이너 레이아웃 */
         .button-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 10px;
+            display: flex; /* Flexbox 레이아웃 사용 */
+            justify-content: center; /* 가로 방향 중앙 정렬 */
+            align-items: center; /* 세로 방향 중앙 정렬 */
+            margin-top: 10px; /* 위쪽 여백 10px */
         }
 
+        /* .button 스타일 설정: 버튼의 크기와 스타일 */
         .button {
-            padding: 10px 20px;
-            font-size: 1em;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            cursor: pointer;
-            margin-right: 10px;
+            padding: 10px 20px; /* 안쪽 여백 10px 20px */
+            font-size: 1em; /* 글자 크기 설정 */
+            background-color: #3498db; /* 버튼 배경색 설정 */
+            color: white; /* 버튼 글자색 설정 */
+            border: none; /* 테두리 제거 */
+            cursor: pointer; /* 커서를 포인터로 설정 */
+            margin-right: 10px; /* 오른쪽 여백 10px */
         }
 
+        /* .button:disabled 스타일 설정: 비활성화된 버튼 스타일 */
         .button:disabled {
-            background-color: #95a5a6;
-            cursor: not-allowed;
+            background-color: #95a5a6; /* 비활성화된 버튼 배경색 설정 */
+            cursor: not-allowed; /* 커서를 허용되지 않음으로 설정 */
         }
 
+        /* .completed-message 스타일 설정: 퍼즐 완료 메시지 스타일 */
         .completed-message {
-            font-size: 1.5em;
-            color: green;
-            margin-top: 20px;
-            display: none;
+            font-size: 1.5em; /* 글자 크기 설정 */
+            color: green; /* 글자색 설정 */
+            margin-top: 20px; /* 위쪽 여백 20px */
+            display: none; /* 초기 상태에서 표시되지 않도록 설정 */
         }
+
     </style>
 </head>
 
@@ -81,22 +90,38 @@
     <!-- 버튼 컨테이너 -->
     <div class="button-container">
         <!-- Undo 버튼 -->
-        <button class="button" id="undo-button" disabled>Undo</button>
+        <button class="button" id="undo-button" disabled>undo</button>
         <!-- Redo 버튼 -->
-        <button class="button" id="redo-button" disabled>Redo</button>
+        <button class="button" id="redo-button" disabled>redo</button>
+        <!-- 셔플 버튼 -->
+        <button class="button" id="shuffle-button">shuffle</button>
     </div>
 
     <script>
-        //버튼들의 id를 변수에 저장
         const container = document.getElementById('puzzle-container');
         const undoButton = document.getElementById('undo-button');
         const redoButton = document.getElementById('redo-button');
+        const shuffleButton = document.getElementById('shuffle-button');
         const completedMessage = document.getElementById('completed-message');
-        //타일의 위치나 움직임을 저장할 배열들
         let tiles = [];
         let positions = [];
         let moves = [];
         let redoMoves = [];
+
+        // 퍼즐 해결 가능 여부 확인 함수
+        function isSolvable(positions) {
+            let inversions = 0;
+            for (let i = 0; i < positions.length; i++) {
+                if (positions[i]) {
+                    for (let j = i + 1; j < positions.length; j++) {
+                        if (positions[i] > positions[j] && positions[j] !== null) {
+                            inversions++;
+                        }
+                    }
+                }
+            }
+            return inversions % 2 === 0;
+        }
 
         // 타일 생성 함수
         function createTiles() {
@@ -107,19 +132,20 @@
             redoMoves = [];
             let numbers = [...Array(15).keys()].map(x => x + 1);
             numbers.push(null);
-            numbers = shuffle(numbers); //숫자 섞기
-
-            numbers.forEach(number => { //섞여진 숫자 16개에 대해 반복
-                const tile = document.createElement('div'); //div를 생성
-                tile.className = 'tile'; //생성한 div의 class를 tile로 지정
-                if (number === null) { //숫자가 없는 빈 퍼즐
-                    tile.classList.add('empty'); //빈 퍼즐의 클래스는 empty
+            do {
+                numbers = shuffle(numbers);
+            } while (!isSolvable(numbers)); // 해결 가능한 퍼즐인지 확인
+            numbers.forEach(number => {
+                const tile = document.createElement('div');
+                tile.className = 'tile';
+                if (number === null) {
+                    tile.classList.add('empty');
                 } else {
-                    tile.textContent = number; //안의 내용은 그 타일에 부여된 숫자
+                    tile.textContent = number;
                 }
-                container.appendChild(tile);  //tile이라는 자식 요소를 끝에 추가
-                tiles.push(tile); //tiles라는 배열에 만든 tile 추가
-                positions.push(number); //position에도 추가
+                container.appendChild(tile);
+                tiles.push(tile);
+                positions.push(number);
             });
         }
 
@@ -141,7 +167,7 @@
                 const emptyTile = tiles[emptyTileIndex];
                 const clickedTile = tiles[tileIndex];
 
-                // Undo를 위해 현재 상태 저장
+                // Save current state for undo
                 moves.push(positions.slice());
 
                 [emptyTile.textContent, clickedTile.textContent] = [clickedTile.textContent, emptyTile.textContent];
@@ -150,11 +176,11 @@
 
                 [positions[emptyTileIndex], positions[tileIndex]] = [positions[tileIndex], positions[emptyTileIndex]];
 
-                // Undo 버튼 활성화
+                // Enable undo button
                 undoButton.disabled = false;
                 redoButton.disabled = true;
 
-                // Redo 기록 초기화
+                // Clear redo moves
                 redoMoves = [];
 
                 if (isCompleted()) {
@@ -194,15 +220,16 @@
 
         // Undo 이동 함수
         function undoMove() {
-            if (moves.length === 0) return;
+            if (moves.length === 0)
+                return;
 
-            // Redo를 위해 현재 상태 저장
+            // 현재 상태를 저장
             redoMoves.push(positions.slice());
 
-            // 이전 상태 복원
+            // 전 상태를 되돌리기
             positions = moves.pop();
 
-            // 타일 업데이트
+            // 업데이트
             positions.forEach((number, index) => {
                 if (number === null) {
                     tiles[index].classList.add('empty');
@@ -213,10 +240,10 @@
                 }
             });
 
-            // Redo 버튼 활성화
+            // redo 버튼 활성화
             redoButton.disabled = false;
 
-            // Undo 버튼 비활성화 (더 이상 Undo할 수 없는 경우)
+            // 더이상 되돌릴게 없으면 undo 버튼 비활성화
             if (moves.length === 0) {
                 undoButton.disabled = true;
             }
@@ -226,13 +253,13 @@
         function redoMove() {
             if (redoMoves.length === 0) return;
 
-            // Undo를 위해 현재 상태 저장
+            // 되돌리기 하기 위한 현재 상태 저장
             moves.push(positions.slice());
 
             // 다음 상태 복원
             positions = redoMoves.pop();
 
-            // 타일 업데이트
+            //업데이트
             positions.forEach((number, index) => {
                 if (number === null) {
                     tiles[index].classList.add('empty');
@@ -243,10 +270,10 @@
                 }
             });
 
-            // Undo 버튼 활성화
+            // undo 버튼 활성화
             undoButton.disabled = false;
 
-            // Redo 버튼 비활성화 (더 이상 Redo할 수 없는 경우)
+            // redo 할게 없으면 redo버튼 비활성화
             if (redoMoves.length === 0) {
                 redoButton.disabled = true;
             }
@@ -265,6 +292,9 @@
 
         // Redo 버튼 클릭 이벤트 처리
         redoButton.addEventListener('click', redoMove);
+
+        // Shuffle 버튼 클릭 이벤트 처리
+        shuffleButton.addEventListener('click', createTiles);
 
         // 초기 퍼즐 생성
         createTiles();
