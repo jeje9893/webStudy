@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>16 Puzzle Solver</title>
+<style>
+    .puzzle {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+        width: 200px;
+        height: 200px;
+        border: 1px solid #000;
+    }
+
+    .tile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ccc;
+        font-size: 20px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+<div class="puzzle" id="puzzle">
+    <div class="tile" id="tile0">1</div>
+    <div class="tile" id="tile1">2</div>
+    <div class="tile" id="tile2">3</div>
+    <div class="tile" id="tile3">4</div>
+    <div class="tile" id="tile4">5</div>
+    <div class="tile" id="tile5">6</div>
+    <div class="tile" id="tile6">7</div>
+    <div class="tile" id="tile7">8</div>
+    <div class="tile" id="tile8">9</div>
+    <div class="tile" id="tile9">10</div>
+    <div class="tile" id="tile10">11</div>
+    <div class="tile" id="tile11">12</div>
+    <div class="tile" id="tile12">13</div>
+    <div class="tile" id="tile13">14</div>
+    <div class="tile" id="tile14">15</div>
+    <div class="tile" id="tile15"></div>
+</div>
+
+<script>
+class PuzzleNode {
+    constructor(squares, emptySquare, value) {
+        this.squares = squares;
+        this.emptySquare = emptySquare;
+        this.value = value;
+        this.visited = false;
+        this.est = 0;
+        for (let i = 0; i < PuzzleNode.numSquares; i++) {
+            if (this.squares[i] === 0) continue;
+            const row = Math.floor((this.squares[i] - 1) / PuzzleNode.numCols);
+            const col = (this.squares[i] - 1) % PuzzleNode.numCols;
+            this.est += Math.abs(col - i % PuzzleNode.numCols) + Math.abs(row - Math.floor(i / PuzzleNode.numCols));
+        }
+    }
+
+    static setDimension(rows, cols) {
+        PuzzleNode.numRows = rows;
+        PuzzleNode.numCols = cols;
+        PuzzleNode.numSquares = rows * cols;
+    }
+
+    static move(squares, numRows, numCols, emptySquare, direction) {
+        const row = Math.floor(emptySquare / numCols);
+        const col = emptySquare % numCols;
+        let newRow = row, newCol = col;
+        switch (direction) {
+            case 0: newCol--; break; // left
+            case 1: newCol++; break; // right
+            case 2: newRow--; break; // up
+            case 3: newRow++; break; // down
+        }
+        if (newRow >= 0 && newRow < numRows && newCol >= 0 && newCol < numCols) {
+            const newEmptySquare = newRow * numCols + newCol;
+            [squares[emptySquare], squares[newEmptySquare]] = [squares[newEmptySquare], squares[emptySquare]];
+            return newEmptySquare;
+        }
+        return emptySquare;
+    }
+
+    compare(node) {
+        return (this.value + this.est <= node.value + node.est);
+    }
+}
+
+function solvePuzzle(param) {
+    const pp = param;
+
+    const queue = [];
+    const hash = Array(HASHSIZE).fill(null);
+
+    PuzzleNode.setDimension(pp.rows, pp.cols);
+
+    const squares = pp.squares.slice();
+    const node = new PuzzleNode(squares, pp.emptySquare, 0);
+    queue.push(node);
+    addHash(hash, node);
+    node.from = null;
+    pp.numNodes = 1;
+
+    while (queue.length > 0) {
+        const node = queue.shift();
+        node.visited = true;
+
+        if (node.est === 0) break;
+
+        for (let i = 0; i < 4; i++) {
+            const newSquares = squares.slice();
+            const newEmptySquare = PuzzleNode.move(newSquares, PuzzleNode.numRows, PuzzleNode.numCols, node.emptySquare, i);
+            if (node.emptySquare === newEmptySquare) continue;
+            let t = findHash(hash, newSquares);
+            if (!t) {
+                t = new PuzzleNode(newSquares, newEmptySquare, node.value + 1);
+                queue.push(t);
+                addHash(hash, t);
+                t.cmd = i;
+                t.from = node;
+                pp.numNodes++;
+            } else if (!t.visited && node.value + 1 < t.value) {
+                t.value = node.value + 1;
+                queue.push(t);
+                t.cmd = i;
+                t.from = node;
+            }
+        }
+    }
+
+    const result = [];
+    let resultNum = 0;
+    if (pp.result) pp.result.length = 0;
+    else pp.result = [];
+    for (let t = node; t.from; t = t.from, resultNum++) {
+        pp.result[resultNum] = t.cmd;
+    }
+    pp.numResult = resultNum;
+
+    for (let i = 0; i < HASHSIZE; i++) {
+        let t = hash[i];
+        while (t) {
+            const next = t.next;
+            delete t;
+            t = next;
+        }
+    }
+}
+
+// Helper functions addHash and findHash
+const HASHSIZE = 100;
+
+function addHash(hash, node) {
+    const index = getHashIndex(node.squares);
+    node.next = hash[index];
+    hash[index] = node;
+}
+
+function findHash(hash, squares) {
+    const index = getHashIndex(squares);
+    let node = hash[index];
+    while (node) {
+        if (compareSquares(node.squares, squares)) return node;
+        node = node.next;
+    }
+    return null;
+}
+
+function getHashIndex(squares) {
+    let hash = 0;
+    for (let i = 0; i < squares.length; i++) {
+        hash = (hash * 31 + squares[i]) % HASHSIZE;
+    }
+    return hash;
+}
+
+function compareSquares(squares1, squares2) {
+    if (squares1.length !== squares2.length) return false;
+    for (let i = 0; i < squares1.length; i++) {
+        if (squares1[i] !== squares2[i]) return false

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16 Puzzle</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 100px);
+            grid-gap: 5px;
+            margin-bottom: 20px;
+        }
+
+        .tile {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #3498db;
+            color: white;
+            font-size: 2em;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .empty {
+            background-color: #ecf0f1;
+            cursor: default;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .button:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        .completed-message {
+            font-size: 1.5em;
+            color: green;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="puzzle-container">
+        <!-- 타일들이 여기에 자바스크립트로 생성됩니다. -->
+    </div>
+    <!-- 퍼즐 완성 메시지 -->
+    <div class="completed-message" id="completed-message">축하합니다! 퍼즐을 완성했습니다!</div>
+    <!-- 버튼 컨테이너 -->
+    <div class="button-container">
+        <!-- Undo 버튼 -->
+        <button class="button" id="undo-button" disabled>되돌리기</button>
+        <!-- Redo 버튼 -->
+        <button class="button" id="redo-button" disabled>다시 실행하기</button>
+        <!-- 셔플 버튼 -->
+        <button class="button" id="shuffle-button">셔플</button>
+    </div>
+
+    <script>
+        const container = document.getElementById('puzzle-container');
+        const undoButton = document.getElementById('undo-button');
+        const redoButton = document.getElementById('redo-button');
+        const shuffleButton = document.getElementById('shuffle-button');
+        const completedMessage = document.getElementById('completed-message');
+        let tiles = [];
+        let positions = [];
+        let moves = [];
+        let redoMoves = [];
+
+        // 퍼즐 해결 가능 여부 확인 함수
+        function isSolvable(positions) {
+            let inversions = 0;
+            for (let i = 0; i < positions.length; i++) {
+                if (positions[i]) {
+                    for (let j = i + 1; j < positions.length; j++) {
+                        if (positions[i] > positions[j] && positions[j] !== null) {
+                            inversions++;
+                        }
+                    }
+                }
+            }
+            return inversions % 2 === 0;
+        }
+
+        // 타일 생성 함수
+        function createTiles() {
+            container.innerHTML = '';
+            tiles = [];
+            positions = [];
+            moves = [];
+            redoMoves = [];
+            let numbers = [...Array(15).keys()].map(x => x + 1);
+            numbers.push(null);
+            do {
+                numbers = shuffle(numbers);
+            } while (!isSolvable(numbers)); // 해결 가능한 퍼즐인지 확인
+            numbers.forEach(number => {
+                const tile = document.createElement('div');
+                tile.className = 'tile';
+                if (number === null) {
+                    tile.classList.add('empty');
+                } else {
+                    tile.textContent = number;
+                }
+                container.appendChild(tile);
+                tiles.push(tile);
+                positions.push(number);
+            });
+        }
+
+        // 배열 섞기 함수
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // 타일 이동 함수
+        function moveTile(tileIndex) {
+            const emptyTileIndex = tiles.findIndex(tile => tile.classList.contains('empty'));
+            const validMoves = getValidMoves(emptyTileIndex);
+
+            if (validMoves.includes(tileIndex)) {
+                const emptyTile = tiles[emptyTileIndex];
+                const clickedTile = tiles[tileIndex];
+
+                // Save current state for undo
+                moves.push(positions.slice());
+
+                [emptyTile.textContent, clickedTile.textContent] = [clickedTile.textContent, emptyTile.textContent];
+                emptyTile.classList.remove('empty');
+                clickedTile.classList.add('empty');
+
+                [positions[emptyTileIndex], positions[tileIndex]] = [positions[tileIndex], positions[emptyTileIndex]];
+
+                // Enable undo button
+                undoButton.disabled = false;
+                redoButton.disabled = true;
+
+                // Clear redo moves
+                redoMoves = [];
+
+                if (isCompleted()) {
+                    showCompletionMessage();
+                }
+            }
+        }
+
+        // 퍼즐 완성 여부 확인 함수
+        function isCompleted() {
+            for (let i = 0; i < positions.length - 1; i++) {
+                if (positions[i] !== i + 1) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        // 퍼즐 완성 메시지 표시 함수
+        function showCompletionMessage() {
+            completedMessage.style.display = 'block';
+        }
+
+        // 유효한 이동 목록 반환 함수
+        function getValidMoves(emptyTileIndex) {
+            const moves = [];
+            const row = Math.floor(emptyTileIndex / 4);
+            const col = emptyTileIndex % 4;
+
+            if (row > 0) moves.push(emptyTileIndex - 4);
+            if (row < 3) moves.push(emptyTileIndex + 4);
+            if (col > 0) moves.push(emptyTileIndex - 1);
+            if (col < 3) moves.push(emptyTileIndex + 1);
+
+            return moves;
+        }
+
+        // Undo 이동 함수
+        function undoMove() {
+            if (moves.length === 0)
+                return;
+
+            // Save current state for redo
+            redoMoves.push(positions.slice());
+
+            // Restore previous state
+            positions = moves.pop();
+
+            // Update tiles
+            positions.forEach((number, index) => {
+                if (number === null) {
+                    tiles[index].classList.add('empty');
+                    tiles[index].textContent = '';
+                } else {
+                    tiles[index].classList.remove('empty');
+                    tiles[index].textContent = number;
+                }
+            });
+
+            // Enable redo button
+            redoButton.disabled = false;
+
+            // Disable undo button if there are no more moves to undo
+            if (moves.length === 0) {
+                undoButton.disabled = true;
+            }
+        }
+
+        // Redo 이동 함수
+        function redoMove() {
+            if (redoMoves.length === 0) return;
+
+            // Save current state for undo
+            moves.push(positions.slice());
+
+            // Restore next state
+            positions = redoMoves.pop();
+
+            // Update tiles
+            positions.forEach((number, index) => {
+                if (number === null) {
+                    tiles[index].classList.add('empty');
+                    tiles[index].textContent = '';
+                } else {
+                    tiles[index].classList.remove('empty');
+                    tiles[index].textContent = number;
+                }
+            });
+
+            // Enable undo button
+            undoButton.disabled = false;
+
+            // Disable redo button if there are no more moves to redo
+            if (redoMoves.length === 0) {
+                redoButton.disabled = true;
+            }
+        }
+
+        // 클릭 이벤트 처리
+        container.addEventListener('click', e => {
+            if (e.target.classList.contains('tile') && !e.target.classList.contains('empty')) {
+                const tileIndex = tiles.indexOf(e.target);
+                moveTile(tileIndex);
+            }
+        });
+
+        // Undo 버튼 클릭 이벤트 처리
+        undoButton.addEventListener('click', undoMove);
+
+        // Redo 버튼 클릭 이벤트 처리
+        redoButton.addEventListener('click', redoMove);
+
+        // Shuffle 버튼 클릭 이벤트 처리
+        shuffleButton.addEventListener('click', createTiles);
+
+        // 초기 퍼즐 생성
+        createTiles();
+    </script>
+</body>
+
+</html>
