@@ -1,0 +1,53 @@
+<style>
+    .digit-input {
+        width: 30px;
+        text-align: center;
+    }
+</style>
+
+<h1>숫자 입력 페이지</h1>
+<form>
+    <label>10개의 디지트와 소수점을 입력하세요:</label>
+    <div id="inputContainer">
+        <input class="digit-input" type="text" maxlength="1" id="input9">
+        <input class="digit-input" type="text" maxlength="1" id="input8">
+        <input class="digit-input" type="text" maxlength="1" id="input7">
+        <input class="digit-input" type="text" maxlength="1" id="input6">
+        <input class="digit-input" type="text" maxlength="1" id="input5">
+        <input class="digit-input" type="text" maxlength="1" id="input4">
+        <input class="digit-input" type="text" maxlength="1" id="input3">
+        <input class="digit-input" type="text" maxlength="1" id="input2">
+        <input class="digit-input" type="text" maxlength="1" id="input1">
+        <input class="digit-input" type="text" maxlength="1" id="input0">
+        <input type="text" id="inputfull" maxlength="10" style='text-align:center;'>
+        <button type="submit">제출</button>
+    </div>
+</form>
+
+<script>
+    const digitInputs = Array.from(document.querySelectorAll('.digit-input'));
+    const fullInput = document.getElementById('inputfull');
+    // digitInputs[0].style.border = "3px solid red";
+
+    digitInputs.forEach((input, index) => {
+        input.addEventListener('focus', () => {
+            fullInput.focus();
+        });
+    });
+    fullInput.addEventListener('input', (event) => {
+        let value = event.target.value;
+        // 숫자와 "." 이외의 입력 제거
+        value = value.replace(/[^0-9.]/g, '');
+        // 소수점이 두 번 이상 입력되지 않도록 처리
+        if (value.indexOf('.') !== value.lastIndexOf('.')) {
+            value = value.slice(0, -1);
+        }
+        event.target.value = value;
+        for (idx = 9; idx > 0; idx--) {
+            digitInputs[idx].value = '';
+        };
+        for (idx = 0; idx < value.length; idx++) {
+            digitInputs[idx + 10 - value.length].value = value[idx];
+        };
+    });
+</script>
