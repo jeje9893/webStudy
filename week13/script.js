@@ -56,19 +56,51 @@ function convertToBinary() {
 }
 
 function toBinary () {
-    let d1 = document.getElementById('deci1');
-    let d2 = document.getElementById('deci2');
+    const d1 = document.getElementById('deci1');
+    const d2 = document.getElementById('deci2');
 
-    d1 = DecToBi(d1);
-    d2 = DecToBi(d2);
+    const d1value = d1.value;
+    const d2value = d2.value;
+
+    const bivalue = DecToBi(d1value);
+
+    d1.value=bivalue;
+
 }
-function DecToBi (deci) {
-    const num = deci;
-    let binNum;
-    while(num > 0){
+
+function DecToBi(deci) {
+    let num = deci;
+    let binNum = '';
+    
+    if (num === 0) {
+        return '0';
+    }
+
+    while (num > 0) {
         const remain = num % 2;
-        binNum.push(remain);
-        num = Math.floor(num/2);
+        binNum = remain + binNum;
+        num = Math.floor(num / 2);
     }
     return binNum;
+}
+
+const numberOfTags = 10;
+        
+// 태그를 추가할 부모 요소
+// 반복문을 사용하여 태그 생성
+for(let j=1; j<=3; j++){
+    const container = document.getElementById(`di${j}`);
+    for (let i = numberOfTags; i >= 0; i--) {
+        // 새 div 요소 생성
+        const newDiv = document.createElement('input');
+        
+        // div 내용 설정
+        newDiv.innerHTML = `1`;
+    
+        newDiv.id=`a${i}`;
+        newDiv.className=`di`;
+        
+        // div 요소를 부모 요소에 추가
+        container.appendChild(newDiv);
+    }
 }
