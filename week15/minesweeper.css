@@ -44,3 +44,20 @@
     border: 1px solid silver;
     text-align: center;
 }
+
+span.count {
+    position: absolute;
+    top: 4px;
+    left: 5px;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: default;
+}
+span.cnt0{color: : #000000;}
+span.cnt1{color: : #000000;}
+span.cnt2{color: : #000000;}
+span.cnt3{color: : #000000;}
+span.cnt4{color: : #000000;}
+span.cnt5{color: : #000000;}
+span.cnt6{color: : #000000;}
+span.cnt7{color: : #000000;}

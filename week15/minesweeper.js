@@ -59,7 +59,31 @@ function leftClick(element, id) {
             cells[ii*width+jj]=1;
         }
         isStarted = true;
+        myInterval = setInterval(timeCount, 1000);
         }
+}
+
+function timeCount() {
+    curTime++;
+    document.getElementById('time').innerHTML = leadingZeros(curTime, 3);
+    if(curTime==999){
+        gameOver();
+    }
+}
+
+function leadingZeros(n, digits) {
+    var zero = '';
+    n = n.toString();
+    if(n.length < digits) {
+        for(var i = 0; i< digits - n.length; i++){
+            zero += '0';
+        }
+        return zero + n;
+    }
+}
+
+function gameOver(){
+    alert("game over");
 }
 
 function rightClick(element, id) {
