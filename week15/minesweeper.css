@@ -1,0 +1,46 @@
+.board {
+    position: relative;
+    border: 2px outset;
+    padding: 5px;
+    width: 724px;
+}
+
+.control {
+    border: 2px inset;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.field {
+    line-height: 12px;
+    border: 2px inset;
+}
+
+#reset {
+    border: 2px outset;
+    cursor: pointer;
+    height: 42px;
+    width: 42px;
+}
+
+.cellClosed {
+    position: relative;
+    display: inline-block;
+    background-color: lightgrey;
+    width: 16px;
+    height: 16px;
+    margin: 0px 0px;
+    border: 4px outset;
+}
+
+.cellOpen {
+    position: relative;
+    display: inline-block;
+    background-color: lightgrey;
+    width: 22px;
+    height: 22px;
+    margin: 0px 0px;
+    padding: 0px 0px;
+    border: 1px solid silver;
+    text-align: center;
+}

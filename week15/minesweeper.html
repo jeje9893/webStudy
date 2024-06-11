@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minesweeper Game</title>
+    <link rel="stylesheet" href="minesweeper.css">
+    <script src="minesweeper.js"></script>
+</head>
+
+<body>
+    <div class="board">
+        <div class="control">
+            <span id="bomb">000</span>
+            <button id="reset" onclick="reset();"></button>
+            <span id="time">000</span>
+        </div>
+        <div class="field">
+            <script>
+                const height = 16;
+                const width = 30;
+                const nBombs = 99;
+                const arraySize = height * width;
+                const neighbor = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]];
+
+                let leftMB = false;
+                let rightMB = false;
+                let bothMB = false;
+
+                let isStarted = false;
+                let isGameEnd = false;
+                let cells = Array(arraySize); // 닫힌상태 >>0:empty, 1:bomb 열린상태>>2
+                cells.fill(0);
+                let checked = Array(arraySize); //닫힌상태 >> 0:not, 1:checked bomb
+                checked.fill(0);
+                let remainBombs=99;
+
+                for (let i = 0; i < height; i++) {
+                    for (let j = 0; j < width; j++) {
+                        id = i * width + j;
+                        document.write("<div class=cellClosed id=" + id);
+                        document.write(" onmousedown='mouseDown(event, this, " + id + ");'");
+                        document.write(" onmouseup='mouseUp(event, this, " + id + ");'");
+                        document.write(" oncontextmenu='doNothing(event);'");
+                        document.write("></div>");
+                    }
+                    document.write("<br>");
+                }
+            </script>
+        </div>
+    </div>
+
+</body>
+
+</html>
