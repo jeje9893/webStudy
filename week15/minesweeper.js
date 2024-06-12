@@ -45,6 +45,12 @@ function leftClick(element, id) {
     // console.log("left mouse button clicked");
     // alert("left mouse button clicked");
     if(isGameEnd==true)return;
+    if(cells[id]==1){
+        document.getElementById(String(id)).style.backgroundColor = 'red';
+        gameOver();
+        return;
+    }
+
     const i = parseInt(id/width);
     const j = id%width;
     let ii, jj;
@@ -61,6 +67,57 @@ function leftClick(element, id) {
         isStarted = true;
         myInterval = setInterval(timeCount, 1000);
         }
+        openCell(i,j);
+}
+
+function openCell(i,j){
+    let id = i*width+j;
+    cells[id] = 2;
+    bombs = bombCount(i,j);
+    extBombCount = "<span class='count cnt" + bombs + "'>" + (bombs?bombs:"") + "</span>";
+
+    document.getElementById(String(id)).className = 'cellOpen';
+    document.getElementById(String(id)).innerHTML = extBombCount;
+
+    let won = true;
+    for(let i = 0; i<height; i++){
+        for( let j = 0; j<width; j++){
+            id = i*width+j;
+            if(cells[id]==0){
+                won = false;
+                break;
+            }
+        }
+    }
+    if(won) gameOver();
+}
+
+function bombCount(i,j){
+    let bombs = 0;
+    let ii;
+    let jj;
+    for(let k=0;k<8;k++){
+        ii=i+neighbor[k][0];
+        jj=j+neighbor[k][1];
+        if(ii<0||height<=ii)continue;
+        if(jj<0||width<=jj)continue;
+        if(cells[ii*width+jj]==1)bombs++;
+    }
+    return bombs;
+}
+
+function checkCount(i,j){
+    let checks=0;
+    let ii;
+    let jj;
+    for(let k=0; k<8; k++){
+        ii=i+neighbor[k][0];
+        jj=j+neighbor[k][1];
+        if(ii<0||height<=ii)continue;
+        if(jj<0||width<=jj)continue;
+        if(checked[ii*width+jj]==1)checks++;
+    }
+    return checks;
 }
 
 function timeCount() {
