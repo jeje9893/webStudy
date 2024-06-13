@@ -120,6 +120,33 @@ function checkCount(i,j){
     return checks;
 }
 
+function reset(){
+    isStarted = false;
+    isGameEnd = false;
+
+    remainBombs=99;
+    document.getElementById('time').innerHTML = '000';
+    curTime = 0;
+
+    leftMB = false;
+    rightMB = false;
+    bothMB = false;
+    savedID = 16*30+1;
+
+    cells.fill(0);
+    checked.fill(0);
+    clearInterval(myInterval);
+
+    for(let i=0; i<height; i++){
+        for(let j=0; j<width; j++){
+            id = i*width+j;
+            document.getElementById(String(id)).className='cellClosed';
+            document.getElementById(String(id)).innerHTML = "";
+            document.getElementById(String(id)).style.backgroundColor = 'lightgray';
+        }
+    }
+}
+
 function timeCount() {
     curTime++;
     document.getElementById('time').innerHTML = leadingZeros(curTime, 3);
@@ -141,11 +168,51 @@ function leadingZeros(n, digits) {
 
 function gameOver(){
     alert("game over");
+    isGameEnd = true;
+    clearInterval(myInterval);
+
+    for(let i =0; i<height; i++){
+        for(let j=0; j<width; j++){
+            id=i*width+j;
+            if(cells[id]==1){
+                document.getElementById(String(id)).style.backgroundColor = 'lightgray';
+                openCell(parseInt(id/width),id%width);
+                document.getElementById(String(id)).innerHTML="<span class='bomb'>💣</span>";
+            }
+            if(cells[id] == 0 && checked[id]==1){
+                document.getElementById(String(id)).style.backgroundColor = 'orange';
+                document.getElementById(String(id)).innerHTML = "<span class='bomb cnt7'>🚩</span>";
+            }
+            if(cells[id] == 1 && checked[id]==1){
+                document.getElementById(String(id)).style.backgroundColor = 'green';
+                document.getElementById(String(id)).innerHTML = "<span class='bomb cnt7'>🚩</span>";
+            }
+        }
+    }
 }
 
 function rightClick(element, id) {
     // console.log("right mouse button clicked");
     // alert("right mouse button clicked");
+    if(isGameEnd==true) return;
+    if(remainBombs==0 && checked[id]==0)return;
+    if(cells[id]==2)return;
+    const i = parseInt(id/width);
+    const j= id%width;
+    if(checked[id]==1){
+        checked[id]=0;
+        remainBombs++;
+        document.getElementById(String(i*width+j)).style.backgroundColor = 'lightgray';
+        document.getElementById(String(id)).innerHTML = "<span class='bomb cnt7'></span>";
+    }
+    else{
+        checked[id]=1;
+        remainBombs--;
+        // document.getElementById(String(i*width+j)).style.backgroundColor = 'orange';
+        // document.getElementById(String(i*width+j)).style.top = 0px;
+        document.getElementById(String(id)).innerHTML = "<span class='bomb cnt7' top = 0px>🚩</span>";
+    }
+    document.getElementById('bomb').innerHTML = leadingZeros(remainBombs, 3);
 }
 
 function bothDown(element, id) {
