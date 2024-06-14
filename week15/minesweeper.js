@@ -102,7 +102,7 @@ function openSurroundingCells(i, j) {
     }
 }
 
-function bombCount(i, j) {
+function bombCount(i, j) { //주변 폭탄 갯수
     let bombs = 0;
     for (let k = 0; k < 8; k++) {
         let ii = i + neighbor[k][0];
@@ -126,12 +126,26 @@ function checkCount(i, j) {
     return checks;
 }
 
+function closeCount(i, j) {
+    let closedCells = 0;
+    for (let k = 0; k < 8; k++) {
+        let ii = i + neighbor[k][0];
+        let jj = j + neighbor[k][1];
+        if (ii >= 0 && ii < height && jj >= 0 && jj < width && cells[ii * width + jj] != 2) { //cell[n] == 0은 폭탄 아님, 1은 폭탄, 2이면 열린 상태
+            closedCells++;
+        }
+    }
+    return closedCells;
+
+}
+
 function reset() {
     isStarted = false;
     isGameEnd = false;
 
     remainBombs = 99;
     document.getElementById('time').innerHTML = '000';
+    document.getElementById('bomb').innerHTML = '0' + remainBombs;
     curTime = 0;
 
     leftMB = false;
@@ -218,9 +232,60 @@ function rightClick(element, id) {
 }
 
 function bothDown(element, id) {
+    if (isGameEnd == true) return;
+    if (remainBombs == 0 && checked[id] == 0) return;
+    if (cells[id] != 2) return;
+
+    const i = parseInt(id / width);
+    const j = id % width;
+
+    
+    for (let k = 0; k < 8; k++) {
+        let ii = i + neighbor[k][0];
+        let jj = j + neighbor[k][1];
+        if (ii >= 0 && ii < height && jj >= 0 && jj < width && cells[ii * width + jj] != 2 && checked[ii * width + jj]==0) { //cell[n] == 0은 폭탄 아님, 1은 폭탄, 2이면 열린 상태
+            tempOpen(ii,jj);
+        }
+    }
     // 코드 생략
 }
 
+function tempOpen(i,j) {
+    let id = i * width + j;
+    document.getElementById(String(id)).className = 'cellOpen';
+    
+}
+function tempClose(i,j) {
+    let id = i * width + j;
+    document.getElementById(String(id)).className = 'cellClosed';
+
+}
+
 function bothUp(element, id) {
+    if (isGameEnd == true) return;
+    if (remainBombs == 0 && checked[id] == 0) return;
+    if (cells[id] != 2) return;
+
+    const i = parseInt(id / width);
+    const j = id % width;
+
+    if (bombCount(i, j) == checkCount(i, j)) {
+        for (let k = 0; k < 8; k++) {
+            let ii = i + neighbor[k][0];
+            let jj = j + neighbor[k][1];
+            if (ii >= 0 && ii < height && jj >= 0 && jj < width && cells[ii * width + jj] != 2) { //cell[n] == 0은 폭탄 아님, 1은 폭탄, 2이면 열린 상태
+                openCell(ii,jj);
+            }
+        }
+    }
+    else {
+        for (let k = 0; k < 8; k++) {
+            let ii = i + neighbor[k][0];
+            let jj = j + neighbor[k][1];
+            if (ii >= 0 && ii < height && jj >= 0 && jj < width && cells[ii * width + jj] != 2 && checked[ii*width+jj]==0) { //cell[n] == 0은 폭탄 아님, 1은 폭탄, 2이면 열린 상태
+                tempClose(ii,jj);
+            }
+        }
+    }
     // 코드 생략
 }
