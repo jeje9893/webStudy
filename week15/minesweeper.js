@@ -120,6 +120,8 @@ function checkCount(i,j){
     return checks;
 }
 
+
+
 function reset(){
     isStarted = false;
     isGameEnd = false;
@@ -174,17 +176,17 @@ function gameOver(){
     for(let i =0; i<height; i++){
         for(let j=0; j<width; j++){
             id=i*width+j;
-            if(cells[id]==1){
+            if(cells[id] == 1 && checked[id]==1){
+                document.getElementById(String(id)).style.backgroundColor = 'lightgray';
+                document.getElementById(String(id)).innerHTML = "<span class='bomb cnt7'>🚩</span>";
+            }
+            else if(cells[id]==1){
                 document.getElementById(String(id)).style.backgroundColor = 'lightgray';
                 openCell(parseInt(id/width),id%width);
                 document.getElementById(String(id)).innerHTML="<span class='bomb'>💣</span>";
             }
             if(cells[id] == 0 && checked[id]==1){
                 document.getElementById(String(id)).style.backgroundColor = 'orange';
-                document.getElementById(String(id)).innerHTML = "<span class='bomb cnt7'>🚩</span>";
-            }
-            if(cells[id] == 1 && checked[id]==1){
-                document.getElementById(String(id)).style.backgroundColor = 'green';
                 document.getElementById(String(id)).innerHTML = "<span class='bomb cnt7'>🚩</span>";
             }
         }
