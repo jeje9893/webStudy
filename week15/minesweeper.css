@@ -63,7 +63,7 @@ span.cnt6{color: #007B7B;}
 span.cnt7{color: #FFFFFF;}
 span.bomb {
     position:absolute;
-    top:0;
+    top:1px;
     left:0;
     font-weight: bold;
     font-size: 16px;

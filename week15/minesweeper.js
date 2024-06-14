@@ -61,7 +61,7 @@ function leftClick(element, id) {
                 ii = Math.floor((Math.random() * height));
                 jj = Math.floor((Math.random() * width));
             }
-            document.getElementById(String(ii*width+jj)).style.backgroundColor = 'black';
+            //document.getElementById(String(ii*width+jj)).style.backgroundColor = 'black';
             cells[ii*width+jj]=1;
         }
         isStarted = true;
